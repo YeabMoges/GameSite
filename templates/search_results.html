@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+<h2 class="text-center">Search Results for "{{ query }}"</h2>
+
+{% if results %}
+    <div class="row mt-4">
+        {% for result in results %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ result.image_url }}" class="card-img-top" alt="{{ result.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ result.name }}</h5>
+                    <p class="card-text">{{ result.description }}</p>
+                    <a href="{{ result.link }}" class="btn btn-primary" target="_blank">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="text-center mt-4">No results found. Try searching for something else!</p>
+{% endif %}
+{% endblock %}

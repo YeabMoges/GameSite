@@ -1,63 +1,39 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Trending Games{% endblock %}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
-<body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url_for('home') }}">GameSite</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('home') }}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('register') }}">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+{% extends 'base.html' %}
 
-    <!-- Main Content -->
-    <div class="container mt-5">
-        <h2 class="text-center">Trending Games This Week</h2>
-        <div class="row">
-            {% for game in games %}
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="{{ game['image_url'] }}" class="card-img-top" alt="{{ game['name'] }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ game['name'] }}</h5>
-                        <p class="card-text">Rating: {{ game['rating'] }}</p>
-                    </div>
-                </div>
+{% block title %}Home - GameSite{% endblock %}
+
+{% block content %}
+<h2 class="text-center">Trending Games from Google Play Store</h2>
+<div class="row mt-4">
+    {% for game in google_play_games %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <img src="{{ game['image_url'] }}" class="card-img-top" alt="{{ game['name'] }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ game['name'] }}</h5>
+                <p class="card-text">{{ game['description'] }}</p>
+                <p class="card-text"><strong>Price:</strong> {{ game['price'] }}</p>
+                <a href="{{ game['store_link'] }}" class="btn btn-primary" target="_blank">View on Google Play Store</a>
             </div>
-            {% endfor %}
         </div>
     </div>
+    {% endfor %}
+</div>
 
-    <!-- Footer -->
-    <footer class="bg-light text-center py-3 mt-5">
-        <p>GameSite &copy; 2024 | Powered by Flask & AWS</p>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<h2 class="text-center mt-5">Trending Games from Steam</h2>
+<div class="row mt-4">
+    {% for game in steam_games %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <img src="{{ game['header_image'] }}" class="card-img-top" alt="{{ game['name'] }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ game['name'] }}</h5>
+                <p class="card-text">{{ game['short_description'] }}</p>
+                <p class="card-text"><strong>Price:</strong> {{ game['price'] }}</p>
+                <a href="{{ game['store_link'] }}" class="btn btn-primary" target="_blank">View on Steam</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

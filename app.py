@@ -23,7 +23,7 @@ class User(db.Model):
 @app.route('/')
 def home():
     # Fetch Steam games from Steam API
-    steam_games = fetch_game_details([1938090, 1880360, 1240440])  # Example AppIDs
+    steam_games = fetch_game_details([1938090, 1880360, 1240440, 2406770])  # Example AppIDs
 
     # Fetch Google Play Store placeholders
     google_play_games = fetch_google_play_games()

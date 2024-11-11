@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
-from utils import fetch_cached_games, fetch_game_details, fetch_google_play_games
+from utils import fetch_cached_games, fetch_game_details, fetch_google_play_games, load_game_data
 import bcrypt
 
 app = Flask(__name__)
@@ -141,6 +141,13 @@ def cart():
 @app.route('/action-games')
 def action_games():
     return render_template('actionGames.html')
+
+
+@app.route('/mobile_games')
+def mobile_games():
+    games = load_game_data()  # Ensure this loads the JSON data
+    print(f"Games loaded: {games}")  # Debugging
+    return render_template('mobileGames.html', games=games)
 
 
 if __name__ == '__main__':

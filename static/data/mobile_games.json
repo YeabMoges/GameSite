@@ -1,0 +1,122 @@
+[
+    {
+        "name": "Among Us",
+        "description": "Multiplayer social deduction game.",
+        "image_url": "images/among_us.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.innersloth.spacemafia",
+        "genre": "casual"
+    },
+    {
+        "name": "Angry Birds",
+        "description": "Physics-based puzzle game.",
+        "image_url": "images/angry_birds.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.rovio.angrybirdsclassic",
+        "genre": "puzzle"
+    },
+    {
+        "name": "Arknights",
+        "description": "Strategic tower defense game.",
+        "image_url": "images/arknights.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.YoStarEN.Arknights",
+        "genre": "strategy"
+    },
+    {
+        "name": "Candy Crush Saga",
+        "description": "Match-three puzzle game.",
+        "image_url": "images/candy_crush_saga.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.king.candycrushsaga",
+        "genre": "puzzle"
+    },
+    {
+        "name": "Clash of Clans",
+        "description": "Popular strategy game with base building and battles.",
+        "image_url": "images/clash_of_clans.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.supercell.clashofclans",
+        "genre": "strategy"
+    },
+    {
+        "name": "Genshin Impact",
+        "description": "Fantasy open-world action RPG.",
+        "image_url": "images/genshin_impact.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.miHoYo.GenshinImpact",
+        "genre": "action-rpg"
+    },
+    {
+        "name": "Honkai: Star Rail",
+        "description": "Turn-based sci-fi RPG adventure.",
+        "image_url": "images/honkai_star_rail.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.miHoYo.HonkaiStarRail",
+        "genre": "action-rpg"
+    },
+    {
+        "name": "Plants vs Zombies",
+        "description": "Tower defense game with unique plant abilities.",
+        "image_url": "images/plants_vs_zombies.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.ea.game.pvzfree_row",
+        "genre": "strategy"
+    },
+    {
+        "name": "Punishing Gray Raven",
+        "description": "Fast-paced action combat RPG.",
+        "image_url": "images/punishing_gray_raven.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.kurogame.gplay.punishing.grayraven.en",
+        "genre": "action-rpg"
+    },
+    {
+        "name": "Puzzle & Dragons",
+        "description": "Unique combination of puzzle and RPG elements.",
+        "image_url": "images/puzzle_and_dragons.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=jp.gungho.padEN",
+        "genre": "puzzle"
+    },
+    {
+        "name": "Roblox",
+        "description": "Game creation system and online multiplayer platform.",
+        "image_url": "images/roblox.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.roblox.client",
+        "genre": "casual"
+    },
+    {
+        "name": "Royal Match",
+        "description": "Match-three puzzle game with kingdom-building elements.",
+        "image_url": "images/royal_match.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=net.peakgames.royalmatch",
+        "genre": "casual"
+    },
+    {
+        "name": "Stardew Valley",
+        "description": "Farming simulation with RPG elements.",
+        "image_url": "images/stardew_valley.jpg",
+        "price": "$4.99",
+        "store_link": "https://play.google.com/store/apps/details?id=com.chucklefish.stardewvalley",
+        "genre": "casual"
+    },
+    {
+        "name": "Tetris",
+        "description": "Classic tile-matching puzzle game.",
+        "image_url": "images/tetris.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.n3twork.tetris",
+        "genre": "puzzle"
+    },
+    {
+        "name": "Wuthering Waves",
+        "description": "Open-world action RPG.",
+        "image_url": "images/wuthering_waves.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.kurogame.wutheringwaves.global",
+        "genre": "action-rpg"
+    }
+]

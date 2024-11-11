@@ -1,0 +1,115 @@
+{% extends 'mobile_base.html' %}
+
+{% block title %}Mobile Games - GameSite{% endblock %}
+
+{% block content %}
+
+<!-- Advertisement Section -->
+<div class="d-flex justify-content-center align-items-center mt-3">
+    <div class="text-center">
+        <h3>Sponsored Ad</h3>
+        <iframe
+            id="random-ad-video"
+            width="1600"
+            height="400"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const videoIds = [
+            '44MOkHyEvJs',  // Replace with actual video IDs
+            'R8htow_6tRc',
+            'QLuShrJyurE'
+        ];
+        const randomVideoId = videoIds[Math.floor(Math.random() * videoIds.length)];
+        document.getElementById('random-ad-video').src = `https://www.youtube.com/embed/${randomVideoId}?autoplay=1&loop=1&mute=1&playlist=${randomVideoId}`;
+    });
+</script>
+
+<div class="row mt-5">
+    <!-- Left Navigation Pane with Collapsible Menu -->
+    <div class="col-lg-2 col-md-3">
+        <h4>Genres</h4>
+        <div class="accordion" id="genreAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingGenres">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGenres" aria-expanded="true" aria-controls="collapseGenres">
+                        Select Genre
+                    </button>
+                </h2>
+                <div id="collapseGenres" class="accordion-collapse collapse show" aria-labelledby="headingGenres">
+                    <div class="accordion-body p-0">
+                        <ul class="list-group">
+                            <li class="list-group-item p-0"><a href="#" class="btn btn-warning w-100 filter" data-genre="all">All Games</a></li>
+                            <li class="list-group-item p-0"><a href="#" class="btn btn-warning w-100 filter" data-genre="action-rpg">Action RPG Games</a></li>
+                            <li class="list-group-item p-0"><a href="#" class="btn btn-warning w-100 filter" data-genre="strategy">Strategy</a></li>
+                            <li class="list-group-item p-0"><a href="#" class="btn btn-warning w-100 filter" data-genre="puzzle">Puzzles</a></li>
+                            <li class="list-group-item p-0"><a href="#" class="btn btn-warning w-100 filter" data-genre="casual">Casual</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content: Mobile Games -->
+    <div class="col-lg-8 col-md-6">
+        <h2 class="text-center">Mobile Games</h2>
+        <div class="row mt-4" id="games-list">
+            {% for game in games %}
+            <div class="col-lg-3 col-md-6 mb-4 game-card" data-genre="{{ game['genre'] }}">
+                <div class="card">
+                    <img src="{{ game['image_url'] }}" class="card-img-top" alt="{{ game['name'] }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ game['name'] }}</h5>
+                        <p class="card-text">{{ game['description'] }}</p>
+                        <p class="card-text"><strong>Price:</strong> {{ game['price'] }}</p>
+                        <a href="{{ game['store_link'] }}" class="btn btn-primary" target="_blank">View on Store</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Right Banner Section -->
+    <div class="col-lg-2 col-md-3">
+        <h4>External Links</h4>
+        <a href="https://example.com" target="_blank">
+            <img src="https://via.placeholder.com/400x600" class="img-fluid mb-3" alt="Ad Banner 1">
+        </a>
+        <a href="https://example2.com" target="_blank">
+            <img src="https://via.placeholder.com/400x600" class="img-fluid mb-3" alt="Ad Banner 2">
+        </a>
+    </div>
+</div>
+
+<!-- Script to Handle Filtering -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const filterLinks = document.querySelectorAll('.filter');
+        const gameCards = document.querySelectorAll('.game-card');
+
+        filterLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const genre = this.dataset.genre;
+
+                gameCards.forEach(card => {
+                    if (genre === 'all' || card.dataset.genre === genre) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+{% endblock %}

@@ -1,6 +1,7 @@
 import boto3
 import json
 import requests
+from flask import request
 from flask import url_for
 
 
@@ -59,20 +60,38 @@ def fetch_google_play_games():
             'description': 'Open-world action RPG.',
             'image_url': url_for('static', filename='images/wuthering_waves.jpg'),
             'price': 'Free',
-            'store_link': 'https://play.google.com/store/apps/details?id=wutheringwaves'
+            'store_link': 'https://play.google.com/store/apps/details?id=com.kurogame.wutheringwaves.global'
         },
         {
             'name': 'Punishing Gray Raven',
             'description': 'Fast-paced action combat RPG.',
             'image_url': url_for('static', filename='images/punishing_gray_raven.jpg'),
             'price': 'Free',
-            'store_link': 'https://play.google.com/store/apps/details?id=punishinggrayraven'
+            'store_link': 'https://play.google.com/store/apps/details?id=com.kurogame.gplay.punishing.grayraven.en'
         },
         {
             'name': 'Arknights',
             'description': 'Strategic tower defense game.',
             'image_url': url_for('static', filename='images/arknights.jpg'),
             'price': 'Free',
-            'store_link': 'https://play.google.com/store/apps/details?id=arknights'
+            'store_link': 'https://play.google.com/store/apps/details?id=com.YoStarEN.Arknights'
         }
     ]
+
+
+def load_game_data():
+    """
+    Load mobile game data from a JSON file located in static/data.
+    """
+    try:
+        with open('static/data/mobile_games.json') as f:
+            games = json.load(f)
+
+            # Update image URLs to use request.url_root
+            for game in games:
+                game['image_url'] = f"{request.url_root}static/{game['image_url']}"
+
+            return games
+    except Exception as e:
+        print(f"Error loading game data: {e}")
+        return []

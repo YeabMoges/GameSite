@@ -138,6 +138,10 @@ def cart():
     return "Your shopping cart is currently empty!"
 
 
+@app.route('/action-games')
+def action_games():
+    return render_template('actionGames.html')
+
 
 if __name__ == '__main__':
     with app.app_context():

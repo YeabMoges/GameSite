@@ -5,15 +5,15 @@
 {% block content %}
 <h2 class="text-center">Action Games</h2>
 <div class="row mt-4">
-    {% for i in range(10) %}
+    {% for game in games %}
     <div class="col-md-4">
         <div class="card mb-4">
-            <img src="https://via.placeholder.com/150" class="card-img-top" alt="Game Placeholder">
+            <img src="{{ game['header_image'] }}" class="card-img-top" alt="{{ game['name'] }}">
             <div class="card-body">
-                <h5 class="card-title">Game Placeholder {{ i + 1 }}</h5>
-                <p class="card-text">Description for Game Placeholder {{ i + 1 }}. Add details here when available.</p>
-                <p class="card-text"><strong>Price:</strong> TBD</p>
-                <a href="#" class="btn btn-primary">View Details</a>
+                <h5 class="card-title">{{ game['name'] }}</h5>
+                <p class="card-text">{{ game['short_description'] }}</p>
+                <p class="card-text"><strong>Price:</strong> {{ game['price'] }}</p>
+                <a href="{{ game['store_link'] }}" target="_blank" class="btn btn-primary">View on Steam</a>
             </div>
         </div>
     </div>

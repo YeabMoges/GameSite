@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
 from utils import fetch_cached_games, fetch_game_details, fetch_google_play_games, load_game_data
-import bcrypt
+import bcrypt, pymysql
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
@@ -140,7 +140,23 @@ def cart():
 
 @app.route('/action-games')
 def action_games():
-    return render_template('actionGames.html')
+    # Connect to RDS and fetch action games
+    connection = pymysql.connect(
+        host='gamesite.cg1ttynegix3.us-west-2.rds.amazonaws.com',
+        user='admin',
+        password='VpR6koaUyDcvLK67lcV9',
+        database='site_schema',
+        cursorclass=pymysql.cursors.DictCursor
+    )
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM action_games")
+            games = cursor.fetchall()  # Get all rows as a list of dictionaries
+    finally:
+        connection.close()
+
+    # Pass the games data to the template
+    return render_template('actionGames.html', games=games)
 
 
 @app.route('/mobile_games')

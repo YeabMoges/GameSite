@@ -50,6 +50,16 @@ def fetch_games(table_name):
         connection.close()
     return games
 
+def fetch_mobile_games():
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM mobile_games")  # Query all rows from mobilegame table
+            games = cursor.fetchall()  # Fetch all results as a list of dictionaries
+    finally:
+        connection.close()
+    return games
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -213,8 +223,7 @@ def strategy_games():
 
 @app.route('/mobile_games')
 def mobile_games():
-    games = load_game_data()  # Ensure this loads the JSON data
-    print(f"Games loaded: {games}")  # Debugging
+    games = fetch_mobile_games()  # Fetch games from the mobilegame table in RDS
     return render_template('mobileGames.html', games=games)
 
 

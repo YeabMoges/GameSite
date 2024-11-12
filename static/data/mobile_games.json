@@ -2,7 +2,7 @@
     {
         "name": "Aether Gazer",
         "description": "Fast-paced action RPG in a futuristic setting.",
-        "image_url": "images/aether_gazer.jpg",
+        "image_url": "https://play-lh.googleusercontent.com/9WFC03S4gnmGOrN6YCHKi5qU7bdfnYvoy-pB4D4uc3weqcrJe0-Tdc7XD8XB1q_y1rc=w2560-h1440-rw",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.YoStar.AetherGazer&hl=en_US",
         "genre": "action-rpg"
@@ -10,7 +10,7 @@
     {
         "name": "Among Us",
         "description": "Multiplayer social deduction game.",
-        "image_url": "images/among_us.jpg",
+        "image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS0UczgDnRgLHo7Ddl1swlSOkxA0AkcXCGEbU1VKD3_VlSVrrh1",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.innersloth.spacemafia",
         "genre": "casual"
@@ -18,7 +18,7 @@
     {
         "name": "Angry Birds 2",
         "description": "Physics-based puzzle game.",
-        "image_url": "images/angry_birds.jpg",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS05So9Z17sdHy14hdBJWyom0SUvSJz-FumLs4HqqpvKcxNVcSF",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.rovio.baba",
         "genre": "puzzle"
@@ -26,7 +26,7 @@
     {
         "name": "Arknights",
         "description": "Strategic tower defense game.",
-        "image_url": "images/arknights.jpg",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA6VNHXsTPZB-REwFd6PDq2wfucCwfnaJ2KShgIyfPFQwNSHFs",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.YoStarEN.Arknights",
         "genre": "strategy"
@@ -34,7 +34,7 @@
     {
         "name": "Candy Crush Saga",
         "description": "Match-three puzzle game.",
-        "image_url": "images/candy_crush_saga.jpg",
+        "image_url": "https://play-lh.googleusercontent.com/hXptB-mXa06X4sWrRK6643Y8MA8HRE__-h06f_Nsfd2TH3Cnk4rzQwk98a_Obv9EigI=w2560-h1440-rw",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.king.candycrushsaga",
         "genre": "puzzle"
@@ -42,7 +42,7 @@
     {
         "name": "Clash of Clans",
         "description": "Popular strategy game with base building and battles.",
-        "image_url": "images/clash_of_clans.jpg",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAZLLZw4gcNJq2eDdalgOwlVglyv_rrGD-WG4C4T9UaTFTLXRs",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.supercell.clashofclans",
         "genre": "strategy"
@@ -50,7 +50,7 @@
     {
         "name": "Crossy Road",
         "description": "Endless arcade hopper with unique characters.",
-        "image_url": "images/crossy_road.jpg",
+        "image_url": "https://play-lh.googleusercontent.com/QuRu8qNbAoKy-LfB_A7n6T9Af5MI2w3vE4_8Vqvoq6HattQn0ybnFXeAsWhxE77zjw=w2560-h1440-rw",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.yodo1.crossyroad",
         "genre": "casual"
@@ -58,7 +58,7 @@
     {
         "name": "Diablo Immortal",
         "description": "Dark fantasy action RPG.",
-        "image_url": "images/diablo_immortal.jpg",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScPew-sn5A25XQIf7nQQZ_ItfN_TTpbsuGom4LBHZgwctSCME2",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.blizzard.diablo.immortal",
         "genre": "action-rpg"
@@ -66,7 +66,7 @@
     {
         "name": "Dota Underlords",
         "description": "Strategy auto-battler game.",
-        "image_url": "images/dota_underlords.jpg",
+        "image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQwE3jksmXiqsF5hkiKARhGiKRP4Nj9Zfl4tBDY8tLoRyfJTthI",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.valvesoftware.underlords",
         "genre": "strategy"
@@ -74,7 +74,7 @@
     {
         "name": "Genshin Impact",
         "description": "Fantasy open-world action RPG.",
-        "image_url": "images/genshin_impact.jpg",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8KoQIVkZraXPBZuR4revQ37FQ4YPBibTClkNYk5PRyM6QKiyf",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.miHoYo.GenshinImpact",
         "genre": "action-rpg"
@@ -82,7 +82,7 @@
     {
         "name": "Honkai: Star Rail",
         "description": "Turn-based sci-fi RPG adventure.",
-        "image_url": "images/honkai_star_rail.jpg",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIKdz5k-HREkKdjC5SeO9pvsaFZ6Avkof5Fh2aPM6ePPMe61yG",
         "price": "Free",
         "store_link": "https://play.google.com/store/search?q=Honkai:+Star+Rail&c=apps",
         "genre": "action-rpg"
@@ -92,13 +92,13 @@
         "description": "Tower defense game with unique plant abilities.",
         "image_url": "images/plants_vs_zombies.jpg",
         "price": "Free",
-        "store_link": "https://play.google.com/store/apps/details?id=com.ea.game.pvzfree_row",
+        "store_link": "https://play-lh.googleusercontent.com/wZB6aZQDglCe9oClsSWrTpJBsLgjnn9hv1sncFXlJeB9yfxGnFGSK06dbTDYnVTC5w=w2560-h1440-rw",
         "genre": "strategy"
     },
     {
         "name": "Punishing Gray Raven",
         "description": "Fast-paced action combat RPG.",
-        "image_url": "images/punishing_gray_raven.jpg",
+        "image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQocioKyaRLzL2dXyGkMYPuypxFZuEoFCRmmCaDu578Go8p9A9s",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.kurogame.gplay.punishing.grayraven.en",
         "genre": "action-rpg"
@@ -106,7 +106,7 @@
     {
         "name": "Puzzle & Dragons",
         "description": "Unique combination of puzzle and RPG elements.",
-        "image_url": "images/puzzle_and_dragons.jpg",
+        "image_url": "https://play-lh.googleusercontent.com/88kG8hC3uCh3yHP8J1HS2ruyu0OkOCijTiaFPgycSVyGqE3VzxA2am2XkUZIKtzPV2M=w2560-h1440-rw",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=jp.gungho.padEN",
         "genre": "puzzle"
@@ -114,7 +114,7 @@
     {
         "name": "Roblox",
         "description": "Game creation system and online multiplayer platform.",
-        "image_url": "images/roblox.jpg",
+        "image_url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhb5q3rqsm6qHdig45uBdZkJHwCBsFBi_QuO1IIHDnGMnANgcF",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.roblox.client",
         "genre": "casual"
@@ -122,7 +122,7 @@
     {
         "name": "Royal Match",
         "description": "Match-three puzzle game with kingdom-building elements.",
-        "image_url": "images/royal_match.jpg",
+        "image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ0Vr5bgehRsNFApzsgDnAjzvdJZK0PZRSGJIZJuaFMo5P3SmzA",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.dreamgames.royalmatch",
         "genre": "casual"
@@ -130,7 +130,7 @@
     {
         "name": "Stardew Valley",
         "description": "Farming simulation with RPG elements.",
-        "image_url": "images/stardew_valley.jpg",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYjodiC5iI8_dj-2HEzV0cABYfC06q4zc3M_KIdqLiOsZjemmw",
         "price": "$4.99",
         "store_link": "https://play.google.com/store/apps/details?id=com.chucklefish.stardewvalley",
         "genre": "casual"
@@ -138,7 +138,7 @@
     {
         "name": "Tetris",
         "description": "Classic tile-matching puzzle game.",
-        "image_url": "images/tetris.jpg",
+        "image_url": "https://play-lh.googleusercontent.com/COyT_mnzNHd8CbeRtEUb78HinbiSlxxBF5ErxqWPASdsNM7IRZaJpO56FGuUzmmQLys=w2560-h1440-rw",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.n3twork.tetris",
         "genre": "puzzle"

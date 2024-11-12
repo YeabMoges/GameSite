@@ -10,6 +10,15 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Avoids warning
 
 db = SQLAlchemy(app)
 
+# Setting up RDS connection
+def connect_to_db():
+    return pymysql.connect(
+        host='gamesite.cg1ttynegix3.us-west-2.rds.amazonaws.com',
+        user='admin',
+        password='VpR6koaUyDcvLK67lcV9',
+        database='site_schema',
+        cursorclass=pymysql.cursors.DictCursor
+    )
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -30,6 +39,26 @@ def home():
 
     return render_template('home.html', google_play_games=google_play_games, steam_games=steam_games)
 
+# Fetch results from RDS table
+def fetch_games(table_name):
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(f"SELECT * FROM {table_name}")
+            games = cursor.fetchall()  # Get all rows as a list of dictionaries
+    finally:
+        connection.close()
+    return games
+
+def fetch_mobile_games():
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM mobile_games")  # Query all rows from mobilegame table
+            games = cursor.fetchall()  # Fetch all results as a list of dictionaries
+    finally:
+        connection.close()
+    return games
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -140,29 +169,70 @@ def cart():
 
 @app.route('/action-games')
 def action_games():
-    # Connect to RDS and fetch action games
-    connection = pymysql.connect(
-        host='gamesite.cg1ttynegix3.us-west-2.rds.amazonaws.com',
-        user='admin',
-        password='VpR6koaUyDcvLK67lcV9',
-        database='site_schema',
-        cursorclass=pymysql.cursors.DictCursor
-    )
-    try:
-        with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM action_games")
-            games = cursor.fetchall()  # Get all rows as a list of dictionaries
-    finally:
-        connection.close()
+    games = fetch_games('action_games')  # Fetch from the corresponding table
+    return render_template('genre_games.html', genre='Action', games=games)
 
-    # Pass the games data to the template
-    return render_template('actionGames.html', games=games)
+
+@app.route('/adventure-games')
+def adventure_games():
+    games = fetch_games('adventure_games')
+    return render_template('genre_games.html', genre='Adventure', games=games)
+
+
+# Route for Early Access Games
+@app.route('/earlyaccess-games')
+def earlyaccess_games():
+    games = fetch_games('earlyaccess_games')
+    return render_template('genre_games.html', genre='Early Access', games=games)
+
+
+# Route for Free Games
+@app.route('/free-games')
+def free_games():
+    games = fetch_games('free_games')
+    return render_template('genre_games.html', genre='Free to Play', games=games)
+
+
+# Add additional routes for each genre as needed
+@app.route('/indie-games')
+def indie_games():
+    games = fetch_games('indie_games')
+    return render_template('genre_games.html', genre='Indie', games=games)
+
+
+@app.route('/mmo-games')
+def mmo_games():
+    games = fetch_games('mmo_games')
+    return render_template('genre_games.html', genre='MMO', games=games)
+
+
+@app.route('/rpg-games')
+def rpg_games():
+    games = fetch_games('rpg_games')
+    return render_template('genre_games.html', genre='RPG', games=games)
+
+
+@app.route('/simulation-games')
+def simulation_games():
+    games = fetch_games('simulation_games')
+    return render_template('genre_games.html', genre='Simulation', games=games)
+
+
+@app.route('/sports-games')
+def sports_games():
+    games = fetch_games('sports_games')
+    return render_template('genre_games.html', genre='Sports', games=games)
+
+
+@app.route('/strategy-games')
+def strategy_games():
+    games = fetch_games('strategy_games')
+    return render_template('genre_games.html', genre='Strategy', games=games)
 
 
 @app.route('/mobile_games')
 def mobile_games():
-    games = load_game_data()  # Ensure this loads the JSON data
-    print(f"Games loaded: {games}")  # Debugging
+    games = fetch_mobile_games()  # Fetch games from the mobilegame table in RDS
     return render_template('mobileGames.html', games=games)
 
 
@@ -170,4 +240,3 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()  # Creates the new schema with the additional fields
     app.run(debug=True)
-

@@ -72,8 +72,15 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="gamesDropdown">
                         <li><a class="dropdown-item" href="{{ url_for('action_games') }}">Action</a></li>
-                        <li><a class="dropdown-item" href="#">RPG</a></li>
-                        <li><a class="dropdown-item" href="#">Adventure</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('rpg_games') }}">RPG</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('adventure_games') }}">Adventure</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('earlyaccess_games') }}">Early Access</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('free_games') }}">Free to Play</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('indie_games') }}">Indie</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('mmo_games') }}">MMO</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('simulation_games') }}">Simulation</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('sports_games') }}">Sports</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('strategy_games') }}">Strategy</a></li>
                         <li><a class="dropdown-item" href="{{ url_for('mobile_games') }}">Mobile</a></li>
                     </ul>
                 </li>

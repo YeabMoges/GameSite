@@ -7,7 +7,6 @@
 <!-- Advertisement Section -->
 <div class="d-flex justify-content-center align-items-center mt-3">
     <div class="text-center">
-        <h3>Sponsored Ad</h3>
         <iframe
             id="random-ad-video"
             width="1600"
@@ -22,19 +21,63 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const videoIds = [
-            '44MOkHyEvJs',  // Replace with actual video IDs
+            '44MOkHyEvJs',
             'R8htow_6tRc',
-            'QLuShrJyurE'
+            'QLuShrJyurE',
+            'mfm0VHQJZxE',
+            'GajGrj7HLQM',
+            'uA16fjZArkY',
+            'w8vPZrMFiZ4',
+            'zCX-Tz8KpXE',
+            'Nkhvl4Sazj4',
+            'ot7uXNQskhs',
+            'M0niPfYZaaI',
         ];
-        const randomVideoId = videoIds[Math.floor(Math.random() * videoIds.length)];
-        document.getElementById('random-ad-video').src = `https://www.youtube.com/embed/${randomVideoId}?autoplay=1&loop=1&mute=1&playlist=${randomVideoId}`;
+
+        let shuffledVideos = [...videoIds].sort(() => Math.random() - 0.5);
+        let currentIndex = 0;
+
+        const iframe = document.getElementById('random-ad-video');
+
+        function playVideo(videoId) {
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&enablejsapi=1&rel=0&loop=1&playlist=${shuffledVideos.join(',')}`;
+        }
+
+        function playNextVideo() {
+            currentIndex = (currentIndex + 1) % shuffledVideos.length;
+            playVideo(shuffledVideos[currentIndex]);
+        }
+
+        iframe.addEventListener('load', function () {
+            const player = new YT.Player('random-ad-video', {
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+
+            function onPlayerStateChange(event) {
+                if (event.data === YT.PlayerState.ENDED) {
+                    playNextVideo();
+                }
+            }
+        });
+
+        // Shuffle and start the first video
+        playVideo(shuffledVideos[currentIndex]);
     });
+
+    // Load the YouTube IFrame API script
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
 </script>
+
+
 
 <div class="row mt-5">
     <!-- Left Navigation Pane with Collapsible Menu -->
     <div class="col-lg-2 col-md-3">
-        <h4>Genres</h4>
+        <h4 class="header-button-style">Genres</h4>
         <div class="accordion" id="genreAccordion">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingGenres">
@@ -59,10 +102,13 @@
 
     <!-- Main Content: Mobile Games -->
     <div class="col-lg-8 col-md-6">
-        <h2 class="text-center">Mobile Games</h2>
+        <div class="text-center">
+            <h2 class="header-button-style">Mobile Games</h2>
+        </div>
         <div class="row mt-4" id="games-list">
             {% for game in games %}
             <div class="col-lg-3 col-md-6 mb-4 game-card" data-genre="{{ game['genre'] }}">
+                <a href="{{ game['official_link'] }}" target="_blank" class="game-card-link">
                 <div class="card">
                     <img src="{{ game['image_url'] }}" class="card-img-top" alt="{{ game['name'] }}">
                     <div class="card-body">
@@ -79,15 +125,23 @@
 
     <!-- Right Banner Section -->
     <div class="col-lg-2 col-md-3">
-        <h4>External Links</h4>
-        <a href="https://example.com" target="_blank">
-            <img src="https://via.placeholder.com/400x600" class="img-fluid mb-3" alt="Ad Banner 1">
-        </a>
-        <a href="https://example2.com" target="_blank">
-            <img src="https://via.placeholder.com/400x600" class="img-fluid mb-3" alt="Ad Banner 2">
-        </a>
+        <h4 class="header-button-style">Top Off Here !</h4>
+        <div class="banner-container">
+            <a href="https://www.codashop.com/en-us" target="_blank">
+                <img src="{{ url_for('static', filename='images/banner1.jpg') }}" class="banner-img" alt="Ad Banner 1">
+            </a>
+        </div>
+        <div class="banner-container">
+            <a href="https://play.google/giftcards/#where-to-buy" target="_blank">
+                <img src="{{ url_for('static', filename='images/banner2.jpg') }}" class="banner-img" alt="Ad Banner 2">
+            </a>
+        </div>
+        <div class="banner-container">
+            <a href="https://www.apple.com/shop/gift-cards" target="_blank">
+                <img src="{{ url_for('static', filename='images/banner3.jpg') }}" class="banner-img" alt="Ad Banner 3">
+            </a>
+        </div>
     </div>
-</div>
 
 <!-- Script to Handle Filtering -->
 <script>

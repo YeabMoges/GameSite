@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'VeniteAdoremusStraight';
+    src: url('../fonts/VeniteAdoremusStraight.ttf') format('truetype');
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'VeniteAdoremusStraight', sans-serif;
+}
+
+.header-button-style {
+    display: inline-block; /* Makes the header look like a button */
+    background-color: #ffc107; /* Button background color */
+    color: black; /* Text color */
+    border: 2px solid black; /* Purple border around the button */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border-radius: 5px; /* Optional: Adds rounded corners */
+    font-weight: bold; /* Makes the text bold */
+    text-align: center; /* Centers the text inside the button */
+    margin: 0 auto; /* Center horizontally */
+}

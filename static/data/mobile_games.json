@@ -17,11 +17,11 @@
         "genre": "casual"
     },
     {
-        "name": "Angry Birds",
+        "name": "Angry Birds 2",
         "description": "Physics-based puzzle game.",
         "image_url": "images/angry_birds.jpg",
         "price": "Free",
-        "store_link": "https://play.google.com/store/apps/details?id=com.rovio.angrybirdsclassic",
+        "store_link": "https://play.google.com/store/apps/details?id=com.rovio.baba",
         "genre": "puzzle"
     },
     {
@@ -85,7 +85,7 @@
         "description": "Turn-based sci-fi RPG adventure.",
         "image_url": "images/honkai_star_rail.jpg",
         "price": "Free",
-        "store_link": "https://play.google.com/store/apps/details?id=com.miHoYo.HonkaiStarRail",
+        "store_link": "https://play.google.com/store/search?q=Honkai:+Star+Rail&c=apps",
         "genre": "action-rpg"
     },
     {
@@ -125,7 +125,7 @@
         "description": "Match-three puzzle game with kingdom-building elements.",
         "image_url": "images/royal_match.jpg",
         "price": "Free",
-        "store_link": "https://play.google.com/store/apps/details?id=net.peakgames.royalmatch",
+        "store_link": "https://play.google.com/store/apps/details?id=com.dreamgames.royalmatch",
         "genre": "casual"
     },
     {
@@ -149,13 +149,13 @@
         "description": "Challenging puzzle game with beautiful design.",
         "image_url": "images/two_dots.jpg",
         "price": "Free",
-        "store_link": "https://play.google.com/store/apps/details?id=com.weplaydots.twodots",
+        "store_link": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQmwt9zTUkTKSEHN9D7E8EkljGe5k2AIA311U_DrZXKIy4cM-TX",
         "genre": "puzzle"
     },
     {
         "name": "Wuthering Waves",
         "description": "Open-world action RPG.",
-        "image_url": "images/wuthering_waves.jpg",
+        "image_url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQUfpDmGYGOhmmmas8Af-nq2JrgnrHZAMBoAPvdAVkGllHR8kqm",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.kurogame.wutheringwaves.global",
         "genre": "action-rpg"

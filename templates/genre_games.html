@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}Action Games - GameSite{% endblock %}
+{% block title %}{{ genre }} Games - GameSite{% endblock %}
 
 {% block content %}
-<h2 class="text-center">Action Games</h2>
+<h2 class="text-center">{{ genre }} Games</h2>
 <div class="row mt-4">
     {% for game in games %}
     <div class="col-md-4">

@@ -1,5 +1,13 @@
 [
     {
+        "name": "Aether Gazer",
+        "description": "Fast-paced action RPG in a futuristic setting.",
+        "image_url": "images/aether_gazer.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.YoStar.AetherGazer&hl=en_US",
+        "genre": "action-rpg"
+    },
+    {
         "name": "Among Us",
         "description": "Multiplayer social deduction game.",
         "image_url": "images/among_us.jpg",
@@ -37,6 +45,30 @@
         "image_url": "images/clash_of_clans.jpg",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.supercell.clashofclans",
+        "genre": "strategy"
+    },
+    {
+        "name": "Crossy Road",
+        "description": "Endless arcade hopper with unique characters.",
+        "image_url": "images/crossy_road.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.yodo1.crossyroad",
+        "genre": "casual"
+    },
+    {
+        "name": "Diablo Immortal",
+        "description": "Dark fantasy action RPG.",
+        "image_url": "images/diablo_immortal.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.blizzard.diablo.immortal",
+        "genre": "action-rpg"
+    },
+    {
+        "name": "Dota Underlords",
+        "description": "Strategy auto-battler game.",
+        "image_url": "images/dota_underlords.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.valvesoftware.underlords",
         "genre": "strategy"
     },
     {
@@ -109,6 +141,14 @@
         "image_url": "images/tetris.jpg",
         "price": "Free",
         "store_link": "https://play.google.com/store/apps/details?id=com.n3twork.tetris",
+        "genre": "puzzle"
+    },
+    {
+        "name": "Two Dots",
+        "description": "Challenging puzzle game with beautiful design.",
+        "image_url": "images/two_dots.jpg",
+        "price": "Free",
+        "store_link": "https://play.google.com/store/apps/details?id=com.weplaydots.twodots",
         "genre": "puzzle"
     },
     {

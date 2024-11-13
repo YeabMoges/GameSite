@@ -14,7 +14,7 @@ GENRE_TABLES = {
     'Early Access': 'earlyaccess_games',
     'Free to Play': 'free_games',
     'Indie': 'indie_games',
-    'MMO': 'mmo_games',
+    'Massively Multiplayer': 'mmo_games',
     'RPG': 'rpg_games',
     'Simulation': 'simulation_games',
     'Sports': 'sports_games',
@@ -53,7 +53,7 @@ def fetch_top_genre_games(genre):
     response = requests.get(url)
     if response.status_code == 200:
         games = response.json()
-        top_20_games = list(games.values())[:20]
+        top_20_games = list(games.values())[:32]
         detailed_games = []
         for game in top_20_games:
             game_data = fetch_game_details(game['appid'])

@@ -3,37 +3,97 @@
 {% block title %}Home - GameSite{% endblock %}
 
 {% block content %}
-<h2 class="text-center">Trending Games from Google Play Store</h2>
-<div class="row mt-4">
-    {% for game in google_play_games %}
-    <div class="col-md-4">
-        <div class="card mb-4">
-            <img src="{{ game['image_url'] }}" class="card-img-top" alt="{{ game['name'] }}">
-            <div class="card-body">
-                <h5 class="card-title">{{ game['name'] }}</h5>
-                <p class="card-text">{{ game['description'] }}</p>
-                <p class="card-text"><strong>Price:</strong> {{ game['price'] }}</p>
-                <a href="{{ game['store_link'] }}" class="btn btn-primary" target="_blank">View on Google Play Store</a>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
+<!-- Centered Welcome Section -->
+<div class="text-center my-5">
+    <h1 class="welcome-title">WELCOME TO GAMESITE</h1>
+    <h2 class="trending-title">TRENDING GAMES NETWORK</h2>
+    <p class="welcome-description">
+        Welcome to GameSite, your go-to platform for discovering trending video games. Our mission is to keep you updated with the latest and greatest in the gaming world.
+        We aim to deliver a seamless and efficient experience for our users.
+    </p>
+    <a href="{{ url_for('about') }}" class="btn btn-info btn-lg mt-3">MORE ABOUT US</a>
 </div>
 
-<h2 class="text-center mt-5">Trending Games from Steam</h2>
-<div class="row mt-4">
-    {% for game in steam_games %}
-    <div class="col-md-4">
-        <div class="card mb-4">
-            <img src="{{ game['header_image'] }}" class="card-img-top" alt="{{ game['name'] }}">
-            <div class="card-body">
-                <h5 class="card-title">{{ game['name'] }}</h5>
-                <p class="card-text">{{ game['short_description'] }}</p>
-                <p class="card-text"><strong>Price:</strong> {{ game['price'] }}</p>
-                <a href="{{ game['store_link'] }}" class="btn btn-primary" target="_blank">View on Steam</a>
-            </div>
+<!-- Carousel Section -->
+<div id="gameCarousel" class="carousel slide my-5" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <a href="{{ url_for('action_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1599340/header.jpg?t=1728605858"
+                     class="d-block w-100" alt="Action Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('rpg_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/header.jpg?t=1729236256"
+                     class="d-block w-100" alt="RPG Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('adventure_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/105600/header.jpg?t=1731252354"
+                     class="d-block w-100" alt="Adventure Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('simulation_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/227300/header.jpg?t=1731333232"
+                     class="d-block w-100" alt="Simulation Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('sports_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2195250/header.jpg?t=1730826798"
+                     class="d-block w-100" alt="Sports Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('strategy_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/8930/header.jpg?t=1724341158"
+                     class="d-block w-100" alt="Strategy Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('indie_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/477160/header.jpg?t=1730393885"
+                     class="d-block w-100" alt="Indie Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('free_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1240440/header.jpg?t=1730830074"
+                     class="d-block w-100" alt="Free to Play Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('earlyaccess_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/844870/header.jpg?t=1730282135"
+                     class="d-block w-100" alt="Early Access Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('mobile_games') }}">
+                <img src="https://play-lh.googleusercontent.com/21coBhW0RX-Qh4nPkbBpBt1sWRCrwFVGE8Vz_rQxOvl3bUvHjPvuDCsb9X107PoHpFg=w526-h296-rw"
+                     class="d-block w-100" alt="Mobile Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('mmo_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/582660/header.jpg?t=1728945637"
+                     class="d-block w-100" alt="MMO Games">
+            </a>
         </div>
     </div>
-    {% endfor %}
+    <button class="carousel-control-prev" type="button" data-bs-target="#gameCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#gameCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
+
+<div class="my-5"></div> <!-- Adds space between carousel and other content -->
+
 {% endblock %}

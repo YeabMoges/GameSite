@@ -1,4 +1,4 @@
-{% extends 'mobile_base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Mobile Games - GameSite{% endblock %}
 
@@ -12,71 +12,16 @@
             width="1600"
             height="400"
             frameborder="0"
+            data-videos='{{ genre_videos|tojson }}'  <!-- Pass video IDs as JSON -->
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
         </iframe>
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const videoIds = [
-            '44MOkHyEvJs',
-            'R8htow_6tRc',
-            'QLuShrJyurE',
-            'mfm0VHQJZxE',
-            'GajGrj7HLQM',
-            'uA16fjZArkY',
-            'w8vPZrMFiZ4',
-            'zCX-Tz8KpXE',
-            'Nkhvl4Sazj4',
-            'ot7uXNQskhs',
-            'M0niPfYZaaI',
-        ];
-
-        let shuffledVideos = [...videoIds].sort(() => Math.random() - 0.5);
-        let currentIndex = 0;
-
-        const iframe = document.getElementById('random-ad-video');
-
-        function playVideo(videoId) {
-            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&enablejsapi=1&rel=0&loop=1&playlist=${shuffledVideos.join(',')}`;
-        }
-
-        function playNextVideo() {
-            currentIndex = (currentIndex + 1) % shuffledVideos.length;
-            playVideo(shuffledVideos[currentIndex]);
-        }
-
-        iframe.addEventListener('load', function () {
-            const player = new YT.Player('random-ad-video', {
-                events: {
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-
-            function onPlayerStateChange(event) {
-                if (event.data === YT.PlayerState.ENDED) {
-                    playNextVideo();
-                }
-            }
-        });
-
-        // Shuffle and start the first video
-        playVideo(shuffledVideos[currentIndex]);
-    });
-
-    // Load the YouTube IFrame API script
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.head.appendChild(tag);
-</script>
-
-
-
 <div class="row mt-5">
     <!-- Left Navigation Pane with Collapsible Menu -->
-    <div class="col-lg-2 col-md-3">
+    <div class="col-lg-2">
         <h4 class="header-button-style">Genres</h4>
         <div class="accordion" id="genreAccordion">
             <div class="accordion-item">
@@ -101,31 +46,30 @@
     </div>
 
     <!-- Main Content: Mobile Games -->
-    <div class="col-lg-8 col-md-6">
-        <div class="text-center">
-            <h2 class="header-button-style">Mobile Games</h2>
-        </div>
+    <div class="col-lg-8">
+        <h2 class="header-button-style text-center">Mobile Games</h2>
         <div class="row mt-4" id="games-list">
             {% for game in games %}
-            <div class="col-lg-3 col-md-6 mb-4 game-card" data-genre="{{ game['genre'] }}">
+            <div class="game-card" data-genre="{{ game['genre'] }}">
                 <a href="{{ game['official_link'] }}" target="_blank" class="game-card-link">
-                <div class="card">
-                    <img src="{{ game['image_url'] }}" class="card-img-top" alt="{{ game['name'] }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ game['name'] }}</h5>
-                        <p class="card-text">{{ game['description'] }}</p>
-                        <p class="card-text"><strong>Price:</strong> {{ game['price'] }}</p>
-                        <a href="{{ game['store_link'] }}" class="btn btn-primary" target="_blank">View on Store</a>
+                    <div class="card">
+                        <img src="{{ game['image_url'] }}" class="card-img-top" alt="{{ game['name'] }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ game['name'] }}</h5>
+                            <p class="card-text">{{ game['description'] }}</p>
+                            <p class="card-text"><strong>Price:</strong> {{ game['price'] }}</p>
+                            <a href="{{ game['store_link'] }}" class="btn btn-primary" target="_blank">View on Store</a>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             {% endfor %}
         </div>
     </div>
 
     <!-- Right Banner Section -->
-    <div class="col-lg-2 col-md-3">
-        <h4 class="header-button-style">Top Off Here !</h4>
+    <div class="col-lg-2">
+        <h4 class="header-button-style">Top Off Here!</h4>
         <div class="banner-container">
             <a href="https://www.codashop.com/en-us" target="_blank">
                 <img src="{{ url_for('static', filename='images/banner1.jpg') }}" class="banner-img" alt="Ad Banner 1">
@@ -142,28 +86,26 @@
             </a>
         </div>
     </div>
+</div>
 
-<!-- Script to Handle Filtering -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const filterLinks = document.querySelectorAll('.filter');
-        const gameCards = document.querySelectorAll('.game-card');
+<!-- Bottom Banner Section -->
+<div class="row justify-content-center mt-5">
+    <div class="col-lg-12 text-center">
+        <div class="bottom-banner-container">
+            <a href="https://play.google.com/store/games?hl=en_US" target="_blank">
+                <img src="{{ url_for('static', filename='images/banner4.jpg') }}" class="bottom-banner-img" alt="Bottom Ad Banner 1">
+            </a>
+        </div>
+        <div class="bottom-banner-container">
+            <a href="https://www.apple.com/app-store/" target="_blank">
+                <img src="{{ url_for('static', filename='images/banner5.jpg') }}" class="bottom-banner-img" alt="Bottom Ad Banner 2">
+            </a>
+        </div>
+    </div>
+</div>
 
-        filterLinks.forEach(link => {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
-                const genre = this.dataset.genre;
+{% endblock %}
 
-                gameCards.forEach(card => {
-                    if (genre === 'all' || card.dataset.genre === genre) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-    });
-</script>
-
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 {% endblock %}

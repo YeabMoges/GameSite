@@ -1,3 +1,4 @@
+/* Fonts */
 @font-face {
     font-family: 'VeniteAdoremusStraight';
     src: url('../fonts/VeniteAdoremusStraight.ttf') format('truetype');
@@ -7,14 +8,180 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'VeniteAdoremusStraight', sans-serif;
 }
 
+/* Global Styles */
+body {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(50, 50, 50, 0.85)),
+                url('../images/epic_game_background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.75);
+    font-size: 1.2rem;
+}
+
+/* Dropdown Hover Effect */
+.navbar-nav .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.navbar-nav .dropdown-menu {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+}
+
+/* Navbar Item Spacing */
+.navbar-nav .nav-item {
+    margin-right: 25px; /* Adjust spacing between nav items */
+}
+
+.navbar-nav .nav-item:last-child {
+    margin-right: 0; /* Remove extra spacing for last item */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Dropdown Item Styling */
+.dropdown-item {
+    color: lightgrey;
+}
+
+.dropdown-item:hover {
+    background-color: #555;
+    color: white;
+}
+
+/* Form Styling */
+.form-container {
+    max-width: 800px; /* Limit form width for login/register pages */
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add depth with shadow */
+    color: white; /* Ensure readability */
+    margin-top: 20px;
+}
+
+/* Button Styling */
+.btn-login {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-register {
+    background-color: #ffc107;
+    color: black;
+}
+
+.btn-login:hover, .btn-register:hover {
+    opacity: 0.9; /* Slight hover effect */
+}
+
+/* Header Button Style */
 .header-button-style {
-    display: inline-block; /* Makes the header look like a button */
-    background-color: #ffc107; /* Button background color */
-    color: black; /* Text color */
-    border: 2px solid black; /* Purple border around the button */
-    padding: 10px 20px; /* Adjust padding as needed */
-    border-radius: 5px; /* Optional: Adds rounded corners */
-    font-weight: bold; /* Makes the text bold */
-    text-align: center; /* Centers the text inside the button */
-    margin: 0 auto; /* Center horizontally */
+    display: inline-block;
+    background-color: #ffc107;
+    color: black;
+    border: 2px solid black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Video Background */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
+
+/* Game Card Styling */
+.game-card {
+    flex: 1 1 calc(25% - 15px);
+    max-width: 23%;
+    background: #333;
+    border-radius: 8px;
+    text-align: center;
+    padding: 10px;
+}
+
+.game-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Container Layouts */
+.container {
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.row {
+    margin: 0 auto;
+    max-width: 1600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.col-lg-2 {
+    flex: 1;
+    max-width: 200px;
+}
+
+.col-lg-8 {
+    flex: 4;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Top Banner Styling */
+.banner-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.banner-container {
+    max-width: 200px;
+}
+
+/* Bottom Banner Styling */
+.bottom-banner-container {
+    max-width: 700px; /* Centered banners with fixed width */
+    width: 100%;
+    margin: 0 auto 20px;
+}
+
+.bottom-banner-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

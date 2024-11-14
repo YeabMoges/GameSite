@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
-from utils import fetch_cached_games, fetch_game_details, fetch_google_play_games, load_game_data
 import bcrypt, pymysql
 
 app = Flask(__name__)
@@ -33,13 +32,8 @@ class User(db.Model):
 
 @app.route('/')
 def home():
-    # Fetch Steam games from Steam API
-    steam_games = fetch_game_details([1938090, 1880360, 1240440, 2406770])  # Example AppIDs
-
-    # Fetch Google Play Store placeholders
-    google_play_games = fetch_google_play_games()
-
-    return render_template('home.html', google_play_games=google_play_games, steam_games=steam_games)
+    # You no longer need to fetch any Steam or Google Play data.
+    return render_template('home.html')
 
 
 # Fetch results from RDS table
@@ -138,17 +132,6 @@ def my_account():
         flash('Account updated successfully!', 'success')
 
     return render_template('my_account.html', user=user)
-
-
-# Mock dataset for demonstration purposes
-mock_games = [
-    {'name': 'Call of Duty: Modern Warfare', 'description': 'First-person shooter game',
-     'image_url': 'https://via.placeholder.com/150', 'link': '#'},
-    {'name': 'Monster Hunter Rise', 'description': 'Action RPG game with monster battles',
-     'image_url': 'https://via.placeholder.com/150', 'link': '#'},
-    {'name': 'Halo Infinite', 'description': 'Sci-fi FPS adventure', 'image_url': 'https://via.placeholder.com/150',
-     'link': '#'},
-]
 
 
 @app.route('/search')

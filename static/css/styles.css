@@ -15,12 +15,18 @@ body {
     background-size: cover;
     font-family: 'Roboto', sans-serif;
     color: white;
+    padding-top: 70px; /* Adjust this value to match your navbar height */
 }
 
 /* Navbar Styling */
 .navbar {
-    background-color: rgba(0, 0, 0, 0.75);
-    font-size: 1.2rem;
+    background-color: rgba(0, 0, 0, 0.75); /* Keeps the current transparent dark background */
+    font-size: 1.2rem; /* Maintains font size */
+    width: 100%; /* Ensures navbar spans the full width */
+    position: fixed; /* Fixes navbar to the top of the viewport */
+    top: 0; /* Aligns it to the very top */
+    left: 0; /* Aligns it to the left edge */
+    z-index: 1050; /* Places it above other elements */
 }
 
 /* Dropdown Hover Effect */
@@ -184,4 +190,68 @@ body {
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Welcome Section Styling */
+.welcome-title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.trending-title {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #ffc107; /* Matches the GameSite color scheme */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+}
+
+/* Added more spacing below trending title */
+.welcome-description {
+    font-size: 1.2rem;
+    color: lightgrey;
+    margin-top: 100px; /* Increased spacing between subtitle and description */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    text-align: center; /* Ensure description is centered */
+}
+
+/* Added more spacing below the description */
+.btn-info {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-top: 25px; /* Added spacing between description and button */
+    margin-bottom: -250px;
+}
+
+.btn-info:hover {
+    background-color: #0056b3;
+    opacity: 0.9;
+}
+
+/* Carousel Image Styling */
+.carousel-inner {
+    max-width: 800px; /* Centered carousel with fixed width */
+    margin: 0 auto; /* Center carousel horizontally */
+}
+
+.carousel-item img {
+    width: 100%; /* Ensure images fit the container width */
+    height: 300px; /* Fixed height for consistency */
+    object-fit: cover; /* Maintain aspect ratio without distortion */
+    border-radius: 10px; /* Rounded corners for images */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+
+#gameCarousel {
+    margin-top: 400px !important; /* Ensures spacing is applied */
 }

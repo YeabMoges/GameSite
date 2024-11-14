@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentIndex = 0;
 
     function playVideo(videoId) {
-        videoContainer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&enablejsapi=1&rel=0&loop=1&playlist=${shuffledVideos.join(',')}`;
+        videoContainer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&enablejsapi=1&rel=0&loop=1&playlist=${shuffledVideos.join(',')}&controls=0&modestbranding=1&showinfo=0`;
     }
 
     function playNextVideo() {

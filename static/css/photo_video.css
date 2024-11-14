@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: hsl(255, 40%, 8%);
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Scope the grid and centering styles specifically to the gallery container */
+.gallery-container {
+  display: grid;
+  place-items: center;
+  min-height: 10vh; /* Center gallery in the viewport */
+  padding-top: var(--gallery-top-spacing, 0px); /* Adjustable top spacing */
+  padding-bottom: var(--gallery-bottom-spacing, 200px);
+}
+
+.gallery {
+  --img-size: calc(200px - 1rem / 2);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(6, var(--img-size));
+  grid-template-rows: repeat(3, var(--img-size));
+
+  .gallery-item {
+    position: relative;
+    grid-column: span 2;
+    width: 100%;
+    height: 100%;
+    border-radius: .5rem;
+    clip-path: path('M160,40 C200,0 200,0 240,40 280,80 320,120 360,160 400,200 400,200 360,240 320,280 280,320 240,360 200,400 200,400 160,360 120,320 80,280 40,240 0,200 0,200 40,160Z');
+    transition: filter 500ms, clip-path 500ms;
+
+    &:hover {
+      z-index: 100;
+      clip-path: path('M0,0 C0,0 400,0 400,0 400,0 400,200 400,200 400,400 400,400 400,400 200,400 200,400 0,400 0,400 0,200 0,200 0,200 0,200 0,200Z');
+    }
+
+    &:nth-of-type(4) {
+      grid-column: 2 / span 2;
+    }
+
+    iframe,
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      border: none;
+      border-radius: .5rem;
+      object-fit: cover;
+      clip-path: inherit;
+    }
+
+    iframe {
+      display: none;
+    }
+
+    &:hover iframe {
+      display: block;
+    }
+
+    &:hover img {
+      filter: brightness(0.5);
+    }
+
+    &:not(:hover) iframe {
+      display: none;
+    }
+  }
+
+  &:hover > .gallery-item:not(:hover) img,
+  &:hover > .gallery-item:not(:hover) iframe {
+    filter: brightness(0.5) contrast(0.8);
+    transition: filter 0.3s ease-in-out;
+  }
+
+  &:hover > .gallery-item:hover img,
+  &:hover > .gallery-item:hover iframe {
+    filter: brightness(1);
+  }
+}

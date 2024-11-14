@@ -10,6 +10,9 @@
     <link href="path_to_youplay_css/youplay.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/hover_effects.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    {% block styles %}{% endblock %}
 </head>
 <body>
     <!-- Video Background -->
@@ -89,7 +92,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-center py-3 text-white">
+    <footer class="bg-dark text-center py-3 text-white w-100">
         <p>GameSite &copy; 2024 | Powered by Flask & AWS</p>
     </footer>
 

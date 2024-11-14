@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Accordion</title>
+    <link href="/style.css" rel="stylesheet" />
+    <script src="/main.js" defer></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="accordion">
+        <!-- Panel 1 -->
+        <div class="accordion-panel">
+          <h2 id="panel1-heading">
+            <button
+              class="accordion-trigger"
+              aria-controls="panel1-content"
+              aria-expanded="true"
+            >
+              <span class="accordion-title" id="panel1-title">Topic 1</span>
+              <svg aria-hidden="true" class="accordion-icon">
+                <use xlink:href="#boat"></use>
+              </svg>
+            </button>
+          </h2>
+
+          <div
+            class="accordion-content"
+            id="panel1-content"
+            aria-labelledby="panel1-heading"
+            aria-hidden="false"
+            role="region"
+          >
+            <p>
+              Description 1.
+            </p>
+            <img
+              class="accordion-image"
+              src="https://images.squarespace-cdn.com/content/v1/5fe4caeadae61a2f19719512/c632cb68-1346-4d50-909b-41ca41ad7e8e/Wuthering+Waves+-+Flow"
+              alt="A sailboat at sea during sunset"
+            />
+          </div>
+        </div>
+
+        <!-- Panel 2 -->
+        <div class="accordion-panel">
+          <h2 id="panel2-title">
+            <button
+              class="accordion-trigger"
+              aria-expanded="false"
+              aria-controls="panel2-content"
+            >
+              <span class="accordion-title">Topic 2</span>
+              <svg aria-hidden="true" class="accordion-icon">
+                <use xlink:href="#anchor"></use>
+              </svg>
+            </button>
+          </h2>
+
+          <div
+            role="region"
+            aria-labelledby="panel2-title"
+            aria-hidden="true"
+            class="accordion-content"
+            id="panel2-content"
+          >
+            <p>
+              Description 2.
+            </p>
+            <img
+              class="accordion-image"
+              src="https://c4.wallpaperflare.com/wallpaper/1003/747/683/halo-infinite-halo-hd-wallpaper-preview.jpg"
+              alt="Closeup of a metal chain connected to a metal ring"
+            />
+          </div>
+        </div>
+
+        <!-- Panel 3 -->
+        <div class="accordion-panel">
+          <h2 id="panel3-title">
+            <button
+              class="accordion-trigger"
+              aria-expanded="false"
+              aria-controls="panel3-content"
+            >
+              <span class="accordion-title">Topic 3</span>
+              <svg aria-hidden="true" class="accordion-icon">
+                <use xlink:href="#fishing"></use>
+              </svg>
+            </button>
+          </h2>
+
+          <div
+            role="region"
+            aria-labelledby="panel3-title"
+            aria-hidden="true"
+            class="accordion-content"
+            id="panel3-content"
+          >
+            <p>
+              Description 3.
+            </p>
+            <img
+              class="accordion-image"
+              src="https://wallpapercave.com/wp/wp2860340.jpg"
+              alt="A person fishing in the ocean"
+            />
+          </div>
+        </div>
+
+        <!-- Panel 4 -->
+        <div class="accordion-panel">
+          <h2 id="panel4-title">
+            <button
+              class="accordion-trigger"
+              aria-expanded="false"
+              aria-controls="panel4-content"
+            >
+              <span class="accordion-title">Topic 4</span>
+              <svg aria-hidden="true" class="accordion-icon">
+                <use xlink:href="#lighthouse"></use>
+              </svg>
+            </button>
+          </h2>
+
+          <div
+            role="region"
+            aria-labelledby="panel4-title"
+            aria-hidden="true"
+            class="accordion-content"
+            id="panel4-content"
+          >
+            <p>
+              Description 4.
+            </p>
+            <img
+              class="accordion-image"
+              src="https://i.pinimg.com/originals/fe/5f/8a/fe5f8aaab7df1b6ee17cb4d009f8ebdf.jpg"
+              alt="A white lighthouse with red top"
+            />
+          </div>
+        </div>
+
+        <!-- Panel 5 -->
+        <div class="accordion-panel">
+          <h2 id="panel5-title">
+            <button
+              class="accordion-trigger"
+              aria-expanded="false"
+              aria-controls="panel5-content"
+            >
+              <span class="accordion-title">Topic 5</span>
+              <svg aria-hidden="true" class="accordion-icon">
+                <use xlink:href="#reef"></use>
+              </svg>
+            </button>
+          </h2>
+
+          <div
+            role="region"
+            aria-labelledby="panel5-title"
+            aria-hidden="true"
+            class="accordion-content"
+            id="panel5-content"
+          >
+            <p>
+              Description 5.
+            </p>
+            <img
+              class="accordion-image"
+              src="https://images8.alphacoders.com/118/1186452.jpg"
+              alt="Reef outcropping with a lot of orange fish swimming"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SVG Definitions -->
+    <svg width="0" height="0" class="hidden">
+      <symbol id="boat" viewBox="0 0 35.38 36.29">
+        <!-- SVG content here -->
+      </symbol>
+      <symbol id="anchor" viewBox="0 0 33.89 36.51">
+        <!-- SVG content here -->
+      </symbol>
+      <symbol id="fishing" viewBox="0 0 36.74 35.98">
+        <!-- SVG content here -->
+      </symbol>
+      <symbol id="lighthouse" viewBox="0 0 29.58 36.55">
+        <!-- SVG content here -->
+      </symbol>
+      <symbol id="reef" viewBox="0 0 36 36.23">
+        <!-- SVG content here -->
+      </symbol>
+    </svg>
+  </body>
+</html>

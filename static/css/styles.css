@@ -15,12 +15,18 @@ body {
     background-size: cover;
     font-family: 'Roboto', sans-serif;
     color: white;
+    padding-top: 70px; /* Adjust this value to match your navbar height */
 }
 
 /* Navbar Styling */
 .navbar {
-    background-color: rgba(0, 0, 0, 0.75);
-    font-size: 1.2rem;
+    background-color: rgba(0, 0, 0, 0.75); /* Keeps the current transparent dark background */
+    font-size: 1.2rem; /* Maintains font size */
+    width: 100%; /* Ensures navbar spans the full width */
+    position: fixed; /* Fixes navbar to the top of the viewport */
+    top: 0; /* Aligns it to the very top */
+    left: 0; /* Aligns it to the left edge */
+    z-index: 1050; /* Places it above other elements */
 }
 
 /* Dropdown Hover Effect */
@@ -223,6 +229,7 @@ body {
     font-weight: bold;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     margin-top: 25px; /* Added spacing between description and button */
+    margin-bottom: -250px;
 }
 
 .btn-info:hover {

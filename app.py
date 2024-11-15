@@ -11,6 +11,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Avoids warning
 db = SQLAlchemy(app)
 load_dotenv()
 
+
 # Setting up RDS connection
 def connect_to_db():
     return pymysql.connect(

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
-import bcrypt, pymysql
+from dotenv import load_dotenv
+import bcrypt, pymysql, os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
@@ -8,15 +9,15 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Avoids warning
 
 db = SQLAlchemy(app)
-
+load_dotenv()
 
 # Setting up RDS connection
 def connect_to_db():
     return pymysql.connect(
-        host='gamesite.cg1ttynegix3.us-west-2.rds.amazonaws.com',
-        user='admin',
-        password='VpR6koaUyDcvLK67lcV9',
-        database='site_schema',
+        host=os.getenv('DB_HOST'),
+        user=os.getenv('DB_USER'),
+        password=os.getenv('DB_PASS'),
+        database=os.getenv('DB_NAME'),
         cursorclass=pymysql.cursors.DictCursor
     )
 

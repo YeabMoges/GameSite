@@ -5,3 +5,5 @@ boto3==1.26.0
 requests
 bcrypt
 pymysql
+python-dotenv
+pyyaml

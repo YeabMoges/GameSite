@@ -1,12 +1,15 @@
-import pymysql
-import requests
+import pymysql,requests, os
+from dotenv import load_dotenv
 from datetime import datetime
 
-# Database configuration
-DB_HOST = 'gamesite.cg1ttynegix3.us-west-2.rds.amazonaws.com'
-DB_USER = 'admin'
-DB_PASS = 'VpR6koaUyDcvLK67lcV9'
-DB_NAME = 'site_schema'
+# Load environment variables from .env file
+load_dotenv()
+
+# Access environment variables
+DB_HOST = os.getenv('DB_HOST')
+DB_USER = os.getenv('DB_USER')
+DB_PASS = os.getenv('DB_PASS')
+DB_NAME = os.getenv('DB_NAME')
 
 GENRE_TABLES = {
     'Action': 'action_games',

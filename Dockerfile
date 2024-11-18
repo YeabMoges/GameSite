@@ -1,7 +1,7 @@
 # to build the docker image run
 # sudo docker build -t gamesite-image .
 # To run gamesite in a container run
-# sudo docker run -p 5000:5000 flask-app
+# sudo docker run -p 5000:5000 gamesite-image
 
 FROM python:3.11-slim
 

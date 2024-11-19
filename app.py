@@ -160,9 +160,9 @@ def cart():
 def action_games():
     games = fetch_games('action_games')  # Fetch games from the database
     genre_videos = [  # Action-specific videos
-        'actionVideoID1',
-        'actionVideoID2',
-        'actionVideoID3'
+        'liQLtCLq3tc',
+        'AKXiKBnzpBQ',
+        '5fIAPcVdZO8'
     ]
     return render_template('genre_games.html', genre='Action', games=games, genre_videos=genre_videos)
 
@@ -171,9 +171,9 @@ def action_games():
 def adventure_games():
     games = fetch_games('adventure_games')
     genre_videos = [
-        'adventure_video_1',  # Replace with actual adventure-related video IDs
-        'adventure_video_2',
-        'adventure_video_3'
+        'A88YiZdXugA',  # Replace with actual adventure-related video IDs
+        'f28nKLp-eKg',
+        'D9w97KSEAOo'
     ]
     return render_template('genre_games.html', genre='Adventure', games=games, genre_videos=genre_videos)
 
@@ -183,9 +183,9 @@ def adventure_games():
 def earlyaccess_games():
     games = fetch_games('earlyaccess_games')
     genre_videos = [
-        'earlyaccess_video_1',  # Replace with actual early access-related video IDs
-        'earlyaccess_video_2',
-        'earlyaccess_video_3'
+        '-f_--CwFsNo',  # Replace with actual early access-related video IDs
+        'iU9ZiJQBTqE',
+        '4ms-LHkN6YQ'
     ]
     return render_template('genre_games.html', genre='Early Access', games=games, genre_videos=genre_videos)
 
@@ -195,9 +195,9 @@ def earlyaccess_games():
 def free_games():
     games = fetch_games('free_games')
     genre_videos = [
-        'free_video_1',  # Replace with actual free-to-play-related video IDs
-        'free_video_2',
-        'free_video_3'
+        'Odj7pIsHRt0',  # Replace with actual free-to-play-related video IDs
+        'PyMlV5_HRWk',
+        'c80dVYcL69E'
     ]
     return render_template('genre_games.html', genre='Free to Play', games=games, genre_videos=genre_videos)
 
@@ -207,9 +207,9 @@ def free_games():
 def indie_games():
     games = fetch_games('indie_games')
     genre_videos = [
-        'indie_video_1',  # Replace with actual indie-related video IDs
-        'indie_video_2',
-        'indie_video_3'
+        'SgSX3gOrj60',  # Replace with actual indie-related video IDs
+        'bVbyn7c1X6E',
+        'FcITAzKW3fY'
     ]
     return render_template('genre_games.html', genre='Indie', games=games, genre_videos=genre_videos)
 
@@ -218,9 +218,9 @@ def indie_games():
 def mmo_games():
     games = fetch_games('mmo_games')
     genre_videos = [
-        'mmo_video_1',  # Replace with actual MMO-related video IDs
-        'mmo_video_2',
-        'mmo_video_3'
+        'dZrxWFrd1zQ',  # Replace with actual MMO-related video IDs
+        'W8WFJN2syoM',
+        'kp4WrQp6pUg'
     ]
     return render_template('genre_games.html', genre='MMO', games=games, genre_videos=genre_videos)
 
@@ -229,9 +229,9 @@ def mmo_games():
 def rpg_games():
     games = fetch_games('rpg_games')
     genre_videos = [
-        'video_id_1',  # Replace these with actual RPG-related video IDs
-        'video_id_2',
-        'video_id_3'
+        'BtyBjOW8sGY',  # Replace these with actual RPG-related video IDs
+        '6umhTJQltak',
+        'FOMhUJitBD4'
     ]
     return render_template('genre_games.html', genre='RPG', games=games, genre_videos=genre_videos)
 
@@ -240,9 +240,9 @@ def rpg_games():
 def simulation_games():
     games = fetch_games('simulation_games')
     genre_videos = [
-        'sim_video_1',
-        'sim_video_2',
-        'sim_video_3'
+        '5uvwfskYwl0',
+        'pzgPXOw2plI',
+        '7vlKoMi4Qr0'
     ]
     return render_template('genre_games.html', genre='Simulation', games=games, genre_videos=genre_videos)
 
@@ -251,9 +251,9 @@ def simulation_games():
 def sports_games():
     games = fetch_games('sports_games')
     genre_videos = [
-        'sports_video_1',  # Replace with actual sports-related video IDs
-        'sports_video_2',
-        'sports_video_3'
+        'CYncAnd31Q8',  # Replace with actual sports-related video IDs
+        '9ewiJJe_nYI',
+        'XhP3Xh4LMA8'
     ]
     return render_template('genre_games.html', genre='Sports', games=games, genre_videos=genre_videos)
 
@@ -262,9 +262,9 @@ def sports_games():
 def strategy_games():
     games = fetch_games('strategy_games')
     genre_videos = [
-        'strategy_video_1',  # Replace with actual strategy-related video IDs
-        'strategy_video_2',
-        'strategy_video_3'
+        '5KdE0p2joJw',  # Replace with actual strategy-related video IDs
+        'J8SBp4SyvLc',
+        'fXxe897bW-A'
     ]
     return render_template('genre_games.html', genre='Strategy', games=games, genre_videos=genre_videos)
 

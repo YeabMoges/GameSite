@@ -4,21 +4,12 @@
 
 {% block content %}
 
-<!-- Advertisement Section -->
-<div class="d-flex justify-content-center align-items-center mt-3">
-    <div class="text-center">
-        <h3>Sponsored Ad</h3>
-        <iframe
-            id="random-ad-video"
-            width="1600"
-            height="400"
-            frameborder="0"
-            data-videos='{{ genre_videos|tojson }}'
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-        </iframe>
-    </div>
+<!-- Genre Image Section -->
+<div class="genre-image">
+    <img src="{{ url_for('static', filename='../static/background_images/' + genre|lower + '-Transparent-Image.png.png') }}"
+         alt="{{ genre }} Image">
 </div>
+
 
 <!-- Genre Title -->
 <div class="text-center">

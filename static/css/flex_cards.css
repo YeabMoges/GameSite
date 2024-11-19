@@ -169,11 +169,13 @@ img {
 }
 
 .accordion-icon {
-  fill: var(--_panel-color);
+  fill: var(--_panel-color); /* Optional if using an img */
   background: hsl(0 0% 0% / 0.55);
   width: var(--_button-size);
   aspect-ratio: 1 / 1;
-  padding: 0.75rem;
+  padding: 0; /* Remove padding to let the image fit fully */
   border-radius: 50%;
   z-index: 10;
+  object-fit: cover; /* Ensures the image fits within the circle */
 }
+

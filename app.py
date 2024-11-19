@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
+from search_results import search_games
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import bcrypt, pymysql, os
@@ -138,10 +139,8 @@ def my_account():
 
 @app.route('/search')
 def search():
-    query = request.args.get('q', '').lower()
-    # Filter the mock dataset to find matches
-    results = [game for game in mock_games if query in game['name'].lower()]
-
+    query = request.args.get('q', '').strip()  # Get the search query
+    results = search_games(query)  # Call the function from search_results.py
     return render_template('search_results.html', query=query, results=results)
 
 

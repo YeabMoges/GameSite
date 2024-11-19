@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // YouTube Video Logic
     const videoContainer = document.getElementById('random-ad-video');
     const videoIds = JSON.parse(videoContainer.dataset.videos); // Get the video list from the data attribute
 
@@ -35,4 +36,23 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.appendChild(scriptTag);
 
     window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+
+    // Genre Filtering Logic
+    const filters = document.querySelectorAll('.filter');
+    const gameCards = document.querySelectorAll('.game-card');
+
+    filters.forEach(filter => {
+        filter.addEventListener('click', function (e) {
+            e.preventDefault();
+            const genre = this.dataset.genre;
+
+            gameCards.forEach(card => {
+                if (genre === 'all' || card.dataset.genre === genre) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
 });

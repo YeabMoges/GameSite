@@ -182,9 +182,12 @@ body[data-genre="early access"] {
     content: "";
     display: block;
     height: 2px;
-    background: #f2a93b;
+    background: #f2a93b; /* Underline hover color */
     width: 0%;
-    transition: width 0.3s ease;
+    position: absolute;
+    left: 0;
+    bottom: -1px; /* Position just below the text */
+    transition: width 0.3s ease; /* Smooth animation */
 }
 
 .nav-link:hover::after {
@@ -328,32 +331,46 @@ body[data-genre="early access"] {
     color: white;
 }
 
-/* Form Styling */
-.form-container {
-    max-width: 800px; /* Limit form width for login/register pages */
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add depth with shadow */
-    color: white; /* Ensure readability */
-    margin-top: 20px;
-}
-
-/* Button Styling */
-.btn-login {
-    background-color: #007bff;
-    color: white;
-}
-
+/* Match Buttons with Navigation Links */
+.btn-login,
 .btn-register {
-    background-color: #ffc107;
-    color: black;
+    background: none; /* Remove background */
+    border: none; /* Remove border */
+    color: white; /* Match navbar link color */
+    font-size: 1rem; /* Match navbar font size */
+    text-decoration: none; /* Remove underline */
+    padding: 5px 15px; /* Add some padding for spacing */
+    cursor: pointer; /* Pointer for interactivity */
+    position: relative; /* For hover effects */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
 }
 
-.btn-login:hover, .btn-register:hover {
-    opacity: 0.9; /* Slight hover effect */
+/* Hover Effect for Buttons */
+.btn-login:hover,
+.btn-register:hover {
+    color: #f2a93b; /* Match navbar hover color */
+    background: none; /* Ensure no background appears */
 }
+
+/* Add Underline Hover Effect */
+.btn-login::after,
+.btn-register::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background: #f2a93b; /* Underline hover color */
+    width: 0%;
+    position: absolute;
+    left: 0;
+    bottom: -1px; /* Position just below the text */
+    transition: width 0.3s ease; /* Smooth animation */
+}
+
+.btn-login:hover::after,
+.btn-register:hover::after {
+    width: 100%; /* Expand underline on hover */
+}
+
 
 /* Header Button Style */
 .header-button-style {
@@ -371,18 +388,21 @@ body[data-genre="early access"] {
 
 /* Game Card Styling */
 .game-card {
-    flex: 1 1 calc(25% - 15px);
-    max-width: 23%;
-    background: #333;
-    border-radius: 8px;
+    flex: 1 1 calc(25% - 15px); /* Responsive grid layout */
+    max-width: 23%; /* Limit maximum width */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border with transparency */
+    border-radius: 6px; /* Smooth corners */
     text-align: center;
-    padding: 10px;
+    padding: 15px; /* Extra padding for better spacing */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow for depth */
 }
+
 
 .game-card img {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 2px;
 }
 
 /* Container Layouts */

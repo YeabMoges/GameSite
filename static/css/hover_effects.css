@@ -7,6 +7,7 @@
     transform: scale(1.1); /* Enlarges the card slightly */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Adds shadow effect */
     z-index: 2; /* Ensures it appears on top of other elements */
+    border-color: #f2a93b; /* Highlight border on hover */
 }
 
 .card {
@@ -21,3 +22,4 @@
 .game-card-link:hover {
     text-decoration: none; /* Keeps the card clean on hover */
 }
+

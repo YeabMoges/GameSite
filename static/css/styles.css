@@ -49,10 +49,7 @@ body[data-genre="action"] {
     height: 100%;
     width: 100%;
     min-height: 100vh;
-    background:
-        url('../background_images/Action-Game-Transparent-PNG.png') no-repeat center center,
-        radial-gradient(circle, #ff4747 20%, #900d0d 60%, #000000 100%);
-    background-size: 40%;
+    background: radial-gradient(circle, #ff4747 20%, #900d0d 60%, #000000 100%);
 }
 
 /* RPG Games Background */
@@ -60,10 +57,7 @@ body[data-genre="rpg"] {
     height: 100%;
     width: 100%;
     min-height: 100vh;
-    background:
-        url('../background_images/RPG-Transparent-Image.png') no-repeat center center,
-        radial-gradient(circle, #4cc9f0 20%, #4361ee 60%, #000000 100%);
-    background-size: 40%; /* Adjust size of the PNG */
+    background: radial-gradient(circle, #4cc9f0 20%, #4361ee 60%, #000000 100%);
 }
 
 /* Adventure Games Background */
@@ -146,7 +140,7 @@ body[data-genre="early access"] {
     justify-content: space-between;
     align-items: center;
     position: absolute;
-    top: 20px;
+    top: 100px;
     left: 0;
     right: 0;
     padding: 0 40px;
@@ -155,7 +149,7 @@ body[data-genre="early access"] {
 }
 
 .navbar-brand {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: white;
     text-decoration: none;

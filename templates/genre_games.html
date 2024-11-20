@@ -6,7 +6,7 @@
 
 <!-- Genre Image Section -->
 <div class="genre-image">
-    <img src="{{ url_for('static', filename='../static/background_images/' + genre|lower + '-transparent-image.png.png') }}"
+    <img src="{{ url_for('static', filename='../static/background_images/' + genre.split(' ')[0].lower() + '-transparent-image.png.png') }}"
          alt="{{ genre }} Image">
 </div>
 

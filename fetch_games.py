@@ -34,6 +34,28 @@ def connect_to_db():
         cursorclass=pymysql.cursors.DictCursor
     )
 
+# Create table if it doesn't exist
+def create_table_if_not_exists(table_name):
+    connection = connect_to_db()
+    try:
+        with connection.cursor() as cursor:
+            create_table_query = f"""
+                CREATE TABLE IF NOT EXISTS {table_name} (
+                    appid INT NOT NULL,
+                    name VARCHAR(255) DEFAULT NULL,
+                    header_image TEXT,
+                    short_description TEXT,
+                    price VARCHAR(50) DEFAULT NULL,
+                    store_link TEXT,
+                    last_updated TIMESTAMP NULL DEFAULT NULL,
+                    PRIMARY KEY (appid)
+                );
+            """
+            cursor.execute(create_table_query)
+        connection.commit()
+    finally:
+        connection.close()
+
 # Fetch detailed game info from Steam API using AppID
 def fetch_game_details(appid):
     url = f"https://store.steampowered.com/api/appdetails?appids={appid}"
@@ -97,7 +119,9 @@ def save_to_genre_table(table_name, game_data):
 # Main function to fetch and populate each genre table
 def main():
     for genre, table_name in GENRE_TABLES.items():
-        print(f"Populating table for genre: {genre}")
+        print(f"Ensuring table exists for genre: {genre}")
+        create_table_if_not_exists(table_name)
+        print(f"Fetching and populating table for genre: {genre}")
         top_games = fetch_top_genre_games(genre)
         for game_data in top_games:
             save_to_genre_table(table_name, game_data)

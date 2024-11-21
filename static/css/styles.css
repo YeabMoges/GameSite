@@ -456,6 +456,7 @@ body[data-genre="early access"] {
 
 /* Welcome Section Styling */
 .welcome-title {
+    margin-top: 10rem;
     font-size: 4rem;
     font-weight: bold;
     color: white;

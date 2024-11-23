@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from search_results import search_games
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
+from sqlalchemy.exc import IntegrityError
 import bcrypt, pymysql, os
 
 app = Flask(__name__)
@@ -27,10 +28,10 @@ def connect_to_db():
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
-    password = db.Column(db.String(255), nullable=False)  # For hashed passwords
-    email = db.Column(db.String(100), unique=True, nullable=False)
-    address = db.Column(db.String(200), nullable=True)
-    phone_number = db.Column(db.String(20), nullable=True)
+    password = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)  # Unique email
+    address = db.Column(db.String(200), unique=True, nullable=True)  # Unique address
+    phone_number = db.Column(db.String(20), unique=True, nullable=True)  # Unique phone number
 
 
 @app.route('/')
@@ -71,7 +72,9 @@ def login():
 
         if user and bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
             session['user_id'] = user.id
-            return redirect(url_for('my_account'))
+            session['user_name'] = user.username
+            session['user_email'] = user.email
+            return redirect(url_for('home'))
         else:
             flash('Invalid credentials', 'danger')
 
@@ -85,6 +88,7 @@ def logout():
     return redirect(url_for('home'))
 
 
+# Register Route
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -93,6 +97,35 @@ def register():
         email = request.form['email']
         address = request.form['address']
         phone_number = request.form['phone_number']
+
+        # Sanitize phone number: Remove non-digit characters
+        phone_number = ''.join(filter(str.isdigit, phone_number))  # Keep only digits
+
+        # Validate phone number: Must be digits only and at least 10 characters
+        if phone_number and len(phone_number) < 10:
+            flash('Phone number must be at least 10 digits and contain only numbers.', 'danger')
+            return render_template('register.html')
+
+        # Check if username, email, address, or phone number already exists
+        if User.query.filter_by(username=username).first():
+            flash('Username already exists. Please choose another.', 'danger')
+            return render_template('register.html')
+        if User.query.filter_by(email=email).first():
+            flash('Email is already in use. Please use another.', 'danger')
+            return render_template('register.html')
+        if address and User.query.filter_by(address=address).first():
+            flash('Address is already in use.', 'danger')
+            return render_template('register.html')
+        if phone_number and User.query.filter_by(phone_number=phone_number).first():
+            flash('Phone number is already in use.', 'danger')
+            return render_template('register.html')
+
+        # Password validation
+        import re
+        password_pattern = re.compile(r'^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$')
+        if not password_pattern.match(password):
+            flash('Password must be at least 8 characters long and include at least one uppercase letter, one number, and one special character.', 'danger')
+            return render_template('register.html')
 
         # Hash the password
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
@@ -103,11 +136,34 @@ def register():
         try:
             db.session.add(user)
             db.session.commit()
+            flash('Registration successful! You can now log in.', 'success')
             return redirect(url_for('login'))
-        except:
-            flash('Error: Username or email already exists.', 'danger')
+        except Exception as e:
+            db.session.rollback()
+            flash('An unexpected error occurred. Please try again.', 'danger')
 
     return render_template('register.html')
+
+
+# Check Username Route
+@app.route('/check_username', methods=['GET'])
+def check_username():
+    username = request.args.get('username')
+    if not username:
+        return {'exists': False}, 400  # Bad request if no username is provided
+
+    exists = User.query.filter_by(username=username).first() is not None
+    return {'exists': exists}, 200
+
+
+@app.route('/check_email', methods=['GET'])
+def check_email():
+    email = request.args.get('email')
+    if not email:
+        return {'exists': False}, 400  # Bad request if no email is provided
+
+    exists = User.query.filter_by(email=email).first() is not None
+    return {'exists': exists}, 200
 
 
 @app.route('/about')

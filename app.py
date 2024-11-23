@@ -171,7 +171,7 @@ def action_games():
 def adventure_games():
     games = fetch_games('adventure_games')
     genre_videos = [
-        'A88YiZdXugA',  # Replace with actual adventure-related video IDs
+        'A88YiZdXugA',
         'f28nKLp-eKg',
         'D9w97KSEAOo'
     ]
@@ -183,7 +183,7 @@ def adventure_games():
 def earlyaccess_games():
     games = fetch_games('earlyaccess_games')
     genre_videos = [
-        '-f_--CwFsNo',  # Replace with actual early access-related video IDs
+        '-f_--CwFsNo',
         'iU9ZiJQBTqE',
         '4ms-LHkN6YQ'
     ]
@@ -195,7 +195,7 @@ def earlyaccess_games():
 def free_games():
     games = fetch_games('free_games')
     genre_videos = [
-        'Odj7pIsHRt0',  # Replace with actual free-to-play-related video IDs
+        'Odj7pIsHRt0',
         'PyMlV5_HRWk',
         'c80dVYcL69E'
     ]
@@ -207,7 +207,7 @@ def free_games():
 def indie_games():
     games = fetch_games('indie_games')
     genre_videos = [
-        'SgSX3gOrj60',  # Replace with actual indie-related video IDs
+        'SgSX3gOrj60',
         'bVbyn7c1X6E',
         'FcITAzKW3fY'
     ]
@@ -218,7 +218,7 @@ def indie_games():
 def mmo_games():
     games = fetch_games('mmo_games')
     genre_videos = [
-        'dZrxWFrd1zQ',  # Replace with actual MMO-related video IDs
+        'dZrxWFrd1zQ',
         'W8WFJN2syoM',
         'kp4WrQp6pUg'
     ]
@@ -229,7 +229,7 @@ def mmo_games():
 def rpg_games():
     games = fetch_games('rpg_games')
     genre_videos = [
-        'BtyBjOW8sGY',  # Replace these with actual RPG-related video IDs
+        'BtyBjOW8sGY',
         '6umhTJQltak',
         'FOMhUJitBD4'
     ]
@@ -251,7 +251,7 @@ def simulation_games():
 def sports_games():
     games = fetch_games('sports_games')
     genre_videos = [
-        'CYncAnd31Q8',  # Replace with actual sports-related video IDs
+        'CYncAnd31Q8',
         '9ewiJJe_nYI',
         'XhP3Xh4LMA8'
     ]
@@ -262,7 +262,7 @@ def sports_games():
 def strategy_games():
     games = fetch_games('strategy_games')
     genre_videos = [
-        '5KdE0p2joJw',  # Replace with actual strategy-related video IDs
+        '5KdE0p2joJw',
         'J8SBp4SyvLc',
         'fXxe897bW-A'
     ]
@@ -277,7 +277,7 @@ def mobile_games():
         'GajGrj7HLQM', 'uA16fjZArkY', 'w8vPZrMFiZ4', 'zCX-Tz8KpXE',
         'Nkhvl4Sazj4', 'ot7uXNQskhs', 'M0niPfYZaaI',
     ]
-    return render_template('mobileGames.html', games=games, genre_videos=genre_videos)
+    return render_template('mobileGames.html', genre='Mobile', games=games, genre_videos=genre_videos)
 
 
 if __name__ == '__main__':

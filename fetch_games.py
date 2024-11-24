@@ -25,6 +25,15 @@ GENRE_TABLES = {
 }
 
 # Connect to the RDS database
+def connect_to_server():
+    """Connect to the MySQL server (without specifying a database)."""
+    return pymysql.connect(
+        host=DB_HOST,
+        user=DB_USER,
+        password=DB_PASS,
+        cursorclass=pymysql.cursors.DictCursor
+    )
+
 def connect_to_db():
     return pymysql.connect(
         host=DB_HOST,
@@ -33,6 +42,17 @@ def connect_to_db():
         database=DB_NAME,
         cursorclass=pymysql.cursors.DictCursor
     )
+
+# Create the database if it doesn't exist
+def create_database_if_not_exists():
+    connection = connect_to_server()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME};")
+        connection.commit()
+        print(f"Database `{DB_NAME}` ensured.")
+    finally:
+        connection.close()
 
 # Create table if it doesn't exist
 def create_table_if_not_exists(table_name):
@@ -118,6 +138,7 @@ def save_to_genre_table(table_name, game_data):
 
 # Main function to fetch and populate each genre table
 def main():
+    create_database_if_not_exists()
     for genre, table_name in GENRE_TABLES.items():
         print(f"Ensuring table exists for genre: {genre}")
         create_table_if_not_exists(table_name)

@@ -34,4 +34,20 @@
     {% endfor %}
 </div>
 
+<!-- Advertisement Section -->
+<div class="advertisement-section d-flex justify-content-center align-items-center mt-3">
+    <div class="text-center">
+        <h3>Sponsored Ad</h3>
+        <iframe
+            id="random-ad-video"
+            width="1600"
+            height="400"
+            frameborder="0"
+            data-videos='{{ genre_videos|tojson }}'
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
 {% endblock %}

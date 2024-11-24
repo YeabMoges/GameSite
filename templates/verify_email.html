@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Verify Email - GameSite{% endblock %}
+
+{% block content %}
+<div class="form-container mx-auto">
+    <h2 class="text-center">Verify Your Email</h2>
+    <p class="text-center">Thank you for registering with GameSite! Please enter the verification code we sent to your email address.</p>
+    
+    <form method="POST" action="{{ url_for('verify_email') }}" class="mt-4">
+        <!-- Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <!-- Verification Code -->
+        <div class="mb-3">
+            <label for="code" class="form-label">Verification Code</label>
+            <input type="text" class="form-control" id="code" name="code" required>
+            <div class="form-text" style="color: white;">Enter the 6-digit code sent to your email.</div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-register w-100">Verify</button>
+    </form>
+
+    <!-- Resend Code -->
+    <form method="POST" action="{{ url_for('resend_verification') }}" class="mt-3">
+        <input type="hidden" name="email" value="{{ request.form.email if request.form.email else '' }}">
+        <button type="submit" class="btn btn-secondary w-100">Resend Code</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/verify_email.css') }}">
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Add optional JavaScript for additional interactivity or validation if needed
+</script>
+{% endblock %}

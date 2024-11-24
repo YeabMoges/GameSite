@@ -3,7 +3,7 @@ from search_results import search_games
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 from sqlalchemy.exc import IntegrityError
-import bcrypt, pymysql, os
+import bcrypt, pymysql, os, requests, re
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
@@ -12,6 +12,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Avoids warning
 
 db = SQLAlchemy(app)
 load_dotenv()
+
+# Mailgun configuration
+MAILGUN_API_KEY = os.getenv('MAILGUN_API_KEY')  # Add this to your .env file
+MAILGUN_DOMAIN = os.getenv('MAILGUN_DOMAIN')    # Add your sandbox domain from Mailgun
 
 
 # Setting up RDS connection
@@ -29,9 +33,52 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
-    email = db.Column(db.String(100), unique=True, nullable=False)  # Unique email
-    address = db.Column(db.String(200), unique=True, nullable=True)  # Unique address
-    phone_number = db.Column(db.String(20), unique=True, nullable=True)  # Unique phone number
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    address = db.Column(db.String(200), unique=True, nullable=True)
+    phone_number = db.Column(db.String(20), unique=True, nullable=True)
+    is_verified = db.Column(db.Boolean, default=False)  # Track email verification status
+    verification_code = db.Column(db.String(6), nullable=True)  # Verification code for email
+
+
+def send_verification_email(to_email, verification_code):
+    response = requests.post(
+        f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages",
+        auth=("api", MAILGUN_API_KEY),
+        data={
+            "from": f"noreply@{MAILGUN_DOMAIN}",
+            "to": [to_email],
+            "subject": "Email Verification - GameSite",
+            "text": f"Your verification code is: {verification_code}"
+        }
+    )
+    if response.status_code == 200:
+        print("Verification email sent successfully!")
+    else:
+        print(f"Failed to send email: {response.text}")
+
+
+@app.route('/resend_verification', methods=['POST'])
+def resend_verification():
+    email = request.form['email']
+    user = User.query.filter_by(email=email).first()
+
+    if user and not user.is_verified:
+        new_code = generate_verification_code()
+        user.verification_code = new_code
+        db.session.commit()
+
+        send_verification_email(email, new_code)
+        flash('A new verification code has been sent to your email.', 'info')
+    else:
+        flash('Email not found or already verified.', 'danger')
+
+    return redirect(url_for('verify_email'))
+
+
+# Generate a random verification code
+def generate_verification_code():
+    import random
+    return ''.join(random.choices("0123456789", k=6))  # 6-digit numeric code
 
 
 @app.route('/')
@@ -96,53 +143,77 @@ def register():
         password = request.form['password']
         email = request.form['email']
         address = request.form['address']
-        phone_number = request.form['phone_number']
+        phone_number = ''.join(filter(str.isdigit, request.form['phone_number']))
 
-        # Sanitize phone number: Remove non-digit characters
-        phone_number = ''.join(filter(str.isdigit, phone_number))  # Keep only digits
-
-        # Validate phone number: Must be digits only and at least 10 characters
-        if phone_number and len(phone_number) < 10:
-            flash('Phone number must be at least 10 digits and contain only numbers.', 'danger')
+        # Validate phone number format
+        if len(phone_number) < 10:
+            flash('Phone number must be at least 10 digits.', 'danger')
             return render_template('register.html')
 
-        # Check if username, email, address, or phone number already exists
+        # Check for existing users
         if User.query.filter_by(username=username).first():
-            flash('Username already exists. Please choose another.', 'danger')
+            flash('Username already exists.', 'danger')
             return render_template('register.html')
         if User.query.filter_by(email=email).first():
-            flash('Email is already in use. Please use another.', 'danger')
-            return render_template('register.html')
-        if address and User.query.filter_by(address=address).first():
-            flash('Address is already in use.', 'danger')
-            return render_template('register.html')
-        if phone_number and User.query.filter_by(phone_number=phone_number).first():
-            flash('Phone number is already in use.', 'danger')
+            flash('Email is already in use.', 'danger')
             return render_template('register.html')
 
-        # Password validation
-        import re
+        # Validate password
         password_pattern = re.compile(r'^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$')
         if not password_pattern.match(password):
-            flash('Password must be at least 8 characters long and include at least one uppercase letter, one number, and one special character.', 'danger')
+            flash('Password must include at least one uppercase letter, one number, and one special character.', 'danger')
             return render_template('register.html')
 
-        # Hash the password
+        # Hash password and generate verification code
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+        verification_code = generate_verification_code()
 
-        # Create and save the new user
-        user = User(username=username, password=hashed_password.decode('utf-8'),
-                    email=email, address=address, phone_number=phone_number)
+        # Create new user
+        user = User(
+            username=username,
+            password=hashed_password.decode('utf-8'),
+            email=email,
+            address=address,
+            phone_number=phone_number,
+            verification_code=verification_code,
+            is_verified=False
+        )
+
         try:
             db.session.add(user)
             db.session.commit()
-            flash('Registration successful! You can now log in.', 'success')
-            return redirect(url_for('login'))
+
+            # Send verification email
+            send_verification_email(email, verification_code)
+
+            flash('Registration successful! Check your email for the verification code.', 'info')
+            return redirect(url_for('verify_email'))
         except Exception as e:
             db.session.rollback()
+            print(f"Error: {e}")
             flash('An unexpected error occurred. Please try again.', 'danger')
 
     return render_template('register.html')
+
+
+# Email verification route
+@app.route('/verify_email', methods=['GET', 'POST'])
+def verify_email():
+    if request.method == 'POST':
+        email = request.form['email']
+        code = request.form['code']
+
+        user = User.query.filter_by(email=email).first()
+        if user and user.verification_code == code:
+            user.is_verified = True
+            user.verification_code = None  # Clear the code after verification
+            db.session.commit()
+            flash('Email verified successfully! You can now log in.', 'success')
+            return redirect(url_for('login'))
+        else:
+            flash('Invalid verification code or email. Please try again.', 'danger')
+
+    return render_template('verify_email.html')
 
 
 # Check Username Route

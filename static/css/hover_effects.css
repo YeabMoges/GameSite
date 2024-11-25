@@ -1,0 +1,25 @@
+.game-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Indicates the card is clickable */
+}
+
+.game-card:hover {
+    transform: scale(1.1); /* Enlarges the card slightly */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Adds shadow effect */
+    z-index: 2; /* Ensures it appears on top of other elements */
+    border-color: #f2a93b; /* Highlight border on hover */
+}
+
+.card {
+    border: none; /* Optional: Removes card border for a cleaner look */
+}
+
+.game-card-link {
+    text-decoration: none; /* Removes underline from the link */
+    color: inherit; /* Ensures the text color is inherited */
+}
+
+.game-card-link:hover {
+    text-decoration: none; /* Keeps the card clean on hover */
+}
+

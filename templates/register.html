@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - GameSite{% endblock %}
+
+{% block content %}
+<div class="form-container mx-auto">
+    <h2 class="text-center">Register</h2>
+    <form method="POST" action="{{ url_for('register') }}" class="mt-4" id="registrationForm">
+        <!-- Username -->
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+            <div class="invalid-feedback" id="usernameError">This username is already taken. Please choose another.</div>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required
+                pattern="(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}">
+            <div class="form-text" style="color: white;">Password must be at least 8 characters, include at least one uppercase letter, one number, and one special character.</div>
+            <div class="invalid-feedback">Your password does not meet the requirements.</div>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+            <div class="invalid-feedback" id="emailError">Please enter a valid email address or use one not already in use.</div>
+        </div>
+
+        <!-- Address -->
+        <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" class="form-control" id="address" name="address">
+        </div>
+
+        <!-- Phone Number -->
+        <div class="mb-3">
+            <label for="phone_number" class="form-label">Phone Number</label>
+            <input
+                type="text"
+                class="form-control"
+                id="phone_number"
+                name="phone_number"
+                required
+                pattern="\(\d{3}\)\s\d{3}-\d{4}"
+                minlength="14"
+                maxlength="14"
+                placeholder="(123) 456-7890">
+            <div class="form-text" style="color: white;">Phone number must be in the format: (XXX) XXX-XXXX.</div>
+            <div class="invalid-feedback">Invalid phone number. Ensure it is in the format: (XXX) XXX-XXXX.</div>
+        </div>
+
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-register w-100">Register</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+{% endblock %}

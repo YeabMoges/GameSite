@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %}Mobile Games - GameSite{% endblock %}
+
+{% block content %}
+
+<!-- Genre Image Section -->
+<div class="genre-image">
+    <img src="{{ url_for('static', filename='background_images/mobile-transparent-image.png.png') }}"
+         alt="{{ genre }} Image">
+</div>
+
+<div class="row mt-5">
+    <!-- Left Navigation Pane with Collapsible Menu -->
+    <div class="col-lg-2">
+        <h4 class="header-button-style">Genres</h4>
+        <div class="accordion" id="genreAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingGenres">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGenres" aria-expanded="true" aria-controls="collapseGenres">
+                        Select Genre
+                    </button>
+                </h2>
+                <div id="collapseGenres" class="accordion-collapse collapse show" aria-labelledby="headingGenres">
+                    <div class="accordion-body p-0">
+                        <ul class="list-group">
+                            <li class="list-group-item p-0"><a href="#" class="btn btn-warning w-100 filter" data-genre="all">All Games</a></li>
+                            <li class="list-group-item p-0"><a href="#" class="btn btn-warning w-100 filter" data-genre="action-rpg">Action RPG Games</a></li>
+                            <li class="list-group-item p-0"><a href="#" class="btn btn-warning w-100 filter" data-genre="strategy">Strategy</a></li>
+                            <li class="list-group-item p-0"><a href="#" class="btn btn-warning w-100 filter" data-genre="puzzle">Puzzles</a></li>
+                            <li class="list-group-item p-0"><a href="#" class="btn btn-warning w-100 filter" data-genre="casual">Casual</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content: Mobile Games -->
+    <div class="col-lg-8">
+        <h2 class="header-button-style text-center">Mobile Games</h2>
+        <div class="row mt-4" id="games-list">
+            {% for game in games %}
+            <div class="game-card" data-genre="{{ game['genre'] }}">
+                <a href="{{ game['official_link'] }}" target="_blank" class="game-card-link">
+                    <div class="card">
+                        <img src="{{ game['image_url'] }}" class="card-img-top" alt="{{ game['name'] }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ game['name'] }}</h5>
+                            <p class="card-text">{{ game['description'] }}</p>
+                            <p class="card-text"><strong>Price:</strong> {{ game['price'] }}</p>
+                            <a href="{{ game['store_link'] }}" class="btn btn-primary" target="_blank">View on Store</a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Right Banner Section -->
+    <div class="col-lg-2">
+        <h4 class="header-button-style">Top Off Here!</h4>
+        <div class="banner-container">
+            <a href="https://www.codashop.com/en-us" target="_blank">
+                <img src="{{ url_for('static', filename='images/banner1.jpg') }}" class="banner-img" alt="Ad Banner 1">
+            </a>
+        </div>
+        <div class="banner-container">
+            <a href="https://play.google/giftcards/#where-to-buy" target="_blank">
+                <img src="{{ url_for('static', filename='images/banner2.jpg') }}" class="banner-img" alt="Ad Banner 2">
+            </a>
+        </div>
+        <div class="banner-container">
+            <a href="https://www.apple.com/shop/gift-cards" target="_blank">
+                <img src="{{ url_for('static', filename='images/banner3.jpg') }}" class="banner-img" alt="Ad Banner 3">
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Advertisement Section -->
+<div class="advertisement-section d-flex justify-content-center align-items-center mt-3">
+    <div class="text-center">
+        <iframe
+            id="random-ad-video"
+            width="1600"
+            height="400"
+            frameborder="0"
+            data-videos='{{ genre_videos|tojson }}'  <!-- Pass video IDs as JSON -->
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<!-- Bottom Banner Section -->
+<div class="row justify-content-center mt-5">
+    <div class="col-lg-12 text-center">
+        <div class="bottom-banner-container">
+            <a href="https://play.google.com/store/games?hl=en_US" target="_blank">
+                <img src="{{ url_for('static', filename='images/banner4.jpg') }}" class="bottom-banner-img" alt="Bottom Ad Banner 1">
+            </a>
+        </div>
+        <div class="bottom-banner-container">
+            <a href="https://www.apple.com/app-store/" target="_blank">
+                <img src="{{ url_for('static', filename='images/banner5.jpg') }}" class="bottom-banner-img" alt="Bottom Ad Banner 2">
+            </a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+{% endblock %}

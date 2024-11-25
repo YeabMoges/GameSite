@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GameSite{% endblock %}</title>
+
+    <!-- Bootstrap/CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="path_to_youplay_css/youplay.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hover_effects.css') }}">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(50, 50, 50, 0.85)),
+                        url('path_to_youplay_background/epic_game_background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+
+        .container {
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .col-md-3 {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        .col-md-6 {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .col-md-3.banner {
+            margin-right: 50px;
+        }
+
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .list-group-item {
+            margin-bottom: 3px;
+        }
+
+        .img-fluid {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .dropdown-menu {
+            background-color: #333;
+            color: white;
+        }
+
+        .dropdown-item {
+            color: lightgrey;
+        }
+
+        .dropdown-item:hover {
+            background-color: #555;
+            color: white;
+        }
+
+        .btn-login {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-register {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        .btn-login:hover, .btn-register:hover {
+            opacity: 0.9;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .banner-container {
+            margin-bottom: 20px;
+            max-width: 500px;
+            overflow: hidden;
+        }
+
+        /* Video Background */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Ensure it stays behind all content */
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body data-genre="{{ genre|lower }}">
+    <!-- Video Background -->
+    <video autoplay muted loop class="video-background">
+        <source src="{{ url_for('static', filename='videos/background.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="{{ url_for('home') }}">GameSite</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="gamesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Games
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="gamesDropdown">
+                        <li><a class="dropdown-item" href="{{ url_for('action_games') }}">Action</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('rpg_games') }}">RPG</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('adventure_games') }}">Adventure</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('earlyaccess_games') }}">Early Access</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('free_games') }}">Free to Play</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('indie_games') }}">Indie</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('mmo_games') }}">MMO</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('simulation_games') }}">Simulation</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('sports_games') }}">Sports</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('strategy_games') }}">Strategy</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('mobile_games') }}">Mobile</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="communityDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Community
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="communityDropdown">
+                        <li><a class="dropdown-item" href="#">Forums</a></li>
+                        <li><a class="dropdown-item" href="#">Clans</a></li>
+                        <li><a class="dropdown-item" href="#">Leaderboards</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('shop') }}">Shop</a>
+                </li>
+            </ul>
+            <div class="ms-auto d-flex align-items-center">
+                <form class="d-flex me-3" action="{{ url_for('search') }}" method="GET">
+                    <input class="form-control" type="search" placeholder="Search games..." name="q">
+                </form>
+                <a href="{{ url_for('cart') }}" class="btn btn-light me-3">View My Cart</a>
+                {% if 'user_id' in session %}
+                    <a href="{{ url_for('my_account') }}" class="btn btn-secondary me-2">My Account</a>
+                    <a href="{{ url_for('logout') }}" class="btn btn-danger">Sign Out</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="btn btn-login me-2">Login</a>
+                    <a href="{{ url_for('register') }}" class="btn btn-register">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-center py-3 text-white">
+        <p>GameSite &copy; 2024 | Powered by Flask & AWS</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+</body>
+</html>

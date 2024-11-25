@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - GameSite{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/photo_gallery.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/photo_video.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/flex_cards.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Centered Welcome Section Header -->
+<div class="text-center my-5 ">
+    <h1 class="welcome-title" >WELCOME TO GAMESITE</h1>
+    <h2 class="trending-title">TRENDING GAMES NETWORK</h2>
+</div>
+
+<!-- Photo Gallery Section -->
+<div class="gallery-container">
+  <article class="gallery">
+    <div class="gallery-item" data-video-url="https://www.youtube.com/embed/SI6CGi_lMaw?autoplay=1&mute=1&start=7&controls=0&modestbranding=1&rel=0">
+      <img src="https://i.redd.it/pgr-cn-cloud-database-s-rank-onmiframe-wanshi-lucid-dreamer-v0-ugxaw0x6nc2d1.jpg?width=1170&format=pjpg&auto=webp&s=4cae639cf45c0066421ce43f6ef871467b9057cc" alt="Video 1">
+    </div>
+    <div class="gallery-item" data-video-url="https://www.youtube.com/embed/oyZY_BiTmd8?autoplay=1&mute=1&start=88&controls=0&modestbranding=1&rel=0">
+      <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2933620/169d4b074c035c8befff06f0ba1af6da62981931/capsule_616x353_alt_assets_1.jpg?t=1730505579" alt="Video 2">
+    </div>
+    <div class="gallery-item" data-video-url="https://www.youtube.com/embed/FMp4HCUJzPk?autoplay=1&mute=1&start=118&controls=0&modestbranding=1&rel=0">
+      <img src="https://www.monsterhunter.com/wilds/assets/img/thumb_main.jpg" alt="Video 3">
+    </div>
+    <div class="gallery-item" data-video-url="https://www.youtube.com/embed/7BghYTigv8E?autoplay=1&mute=1&start=159&controls=0&modestbranding=1&rel=0">
+      <img src="https://preview.redd.it/new-key-visual-for-final-fantasy-xiv-dawntrail-v0-o99igd6bdjvb1.jpg?width=640&crop=smart&auto=webp&s=34342cf7111a7c3d0fccc6efa5226050f567f7da" alt="Video 4">
+    </div>
+    <div class="gallery-item" data-video-url="https://www.youtube.com/embed/VUlzltBX3Ac?autoplay=1&mute=1&start=18&controls=0&modestbranding=1&rel=0">
+      <img src="https://cdn2.steamgriddb.com/icon/933e02678cfa0ad61c6fcb918c91e0b3/32/512x512.png" alt="Video 5">
+    </div>
+    <div class="gallery-item" data-video-url="https://www.youtube.com/embed/WG0LIJjFmYA?autoplay=1&mute=1&start=80&controls=0&modestbranding=1&rel=0">
+      <img src="https://img.playstationtrophies.org/images/2024/07/04/icon/382d877b9d0ead9532c1f874ed4cfc9b-l.png" alt="Video 6">
+    </div>
+    <div class="gallery-item" data-video-url="https://www.youtube.com/embed/P-ULQ2nhJO4?autoplay=1&mute=1&start=57&controls=0&modestbranding=1&rel=0">
+      <img src="https://play-lh.googleusercontent.com/Yng9IVp4kTE4SZ5wyiyGHO_5bFplbbg5Ytv27JGf15e8hoJ0sZuelU0NFoJ2Yfn7Xw" alt="Video 7">
+    </div>
+    <div class="gallery-item" data-video-url="https://www.youtube.com/embed/gL6Mx6bHnPc?autoplay=1&mute=1&start=38&controls=0&modestbranding=1&rel=0">
+      <img src="https://steamuserimages-a.akamaihd.net/ugc/2496763197092150318/3D68C490CE0D1181A3DFD43D9F9643219BD1D43C/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" alt="Video 8">
+    </div>
+  </article>
+</div>
+
+<!-- Welcome Description Section -->
+<div class="text-center my-5">
+    <p class="welcome-description">
+        Welcome to GameSite, your go-to platform for discovering trending video games. Our mission is to keep you updated with the latest and greatest in the gaming world.
+        We aim to deliver a seamless and efficient experience for our users.
+    </p>
+    <a href="{{ url_for('about') }}" class="btn btn-info btn-lg mt-3">MORE ABOUT US</a>
+</div>
+
+<!-- Flex Cards Section -->
+<div id="flex-cards-section">
+    {% include 'flex_cards.html' %}
+</div>
+
+<!-- Carousel Section -->
+<div id="gameCarousel" class="carousel slide my-5" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <a href="{{ url_for('action_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1599340/header.jpg?t=1728605858"
+                     class="d-block w-100" alt="Action Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('rpg_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2358720/header.jpg?t=1729236256"
+                     class="d-block w-100" alt="RPG Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('adventure_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/105600/header.jpg?t=1731252354"
+                     class="d-block w-100" alt="Adventure Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('simulation_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/227300/header.jpg?t=1731333232"
+                     class="d-block w-100" alt="Simulation Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('sports_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2195250/header.jpg?t=1730826798"
+                     class="d-block w-100" alt="Sports Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('strategy_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/8930/header.jpg?t=1724341158"
+                     class="d-block w-100" alt="Strategy Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('indie_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/477160/header.jpg?t=1730393885"
+                     class="d-block w-100" alt="Indie Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('free_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1240440/header.jpg?t=1730830074"
+                     class="d-block w-100" alt="Free to Play Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('earlyaccess_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/844870/header.jpg?t=1730282135"
+                     class="d-block w-100" alt="Early Access Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('mobile_games') }}">
+                <img src="https://play-lh.googleusercontent.com/21coBhW0RX-Qh4nPkbBpBt1sWRCrwFVGE8Vz_rQxOvl3bUvHjPvuDCsb9X107PoHpFg=w526-h296-rw"
+                     class="d-block w-100" alt="Mobile Games">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="{{ url_for('mmo_games') }}">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/582660/header.jpg?t=1728945637"
+                     class="d-block w-100" alt="MMO Games">
+            </a>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#gameCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#gameCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="my-5"></div> <!-- Adds space between carousel and other content -->
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/flex_cards.js') }}"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const galleryItems = document.querySelectorAll('.gallery-item');
+
+  galleryItems.forEach(item => {
+    const videoUrl = item.getAttribute('data-video-url');
+    const img = item.querySelector('img');
+
+    item.addEventListener('mouseenter', () => {
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('src', videoUrl);
+      iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute('allow', 'autoplay; encrypted-media');
+      iframe.setAttribute('allowfullscreen', true);
+      iframe.style.width = img.offsetWidth + 'px';
+      iframe.style.height = img.offsetHeight + 'px';
+
+      // Add zoom feature
+      iframe.style.transform = 'scale(1.5)';
+      iframe.style.transformOrigin = 'center center';
+
+      item.replaceChild(iframe, img);
+    });
+
+    item.addEventListener('mouseleave', () => {
+      item.innerHTML = ''; // Clear iframe
+      item.appendChild(img); // Restore image
+    });
+  });
+});
+</script>
+
+{% endblock %}

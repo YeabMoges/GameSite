@@ -1,0 +1,102 @@
+/* Root variables for colors */
+:root {
+    --clr-success: hsl(143, 100%, 26%); /* Green */
+    --clr-warning: hsl(43, 100%, 66%);  /* Yellow */
+    --clr-error: hsl(348, 55%, 49%);    /* Red */
+    --clr-default: hsl(203, 30%, 26%);  /* Neutral blue/gray */
+}
+
+/* Form Styling */
+.form-container {
+    max-width: 800px; /* Limit form width for login/register pages */
+    width: 100%;
+    background-color: rgba(30, 30, 30, 0.85); /* Charcoal gray */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add depth with shadow */
+    color: white; /* Ensure readability */
+    margin-top: 100px;
+    margin-bottom: 200px;
+}
+
+/* General input styling */
+input.form-control {
+    border: none; /* Remove box borders */
+    border-bottom: 2px solid var(--clr-default); /* Default underline color */
+    border-radius: 0; /* No rounded corners */
+    background-color: transparent !important; /* Ensure transparency */
+    color: white !important; /* Keep text white */
+    font-size: 16px; /* Adjust font size for readability */
+    padding: 5px 0; /* Minimal padding for a clean look */
+    outline: none; /* Remove the focus outline */
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Placeholder styling */
+input.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* Light placeholder text */
+}
+
+/* Hover effect */
+input.form-control:hover {
+    border-bottom: 2px solid var(--clr-warning); /* Yellow underline */
+}
+
+/* Focused input */
+input.form-control:focus {
+    border-bottom: 2px solid var(--clr-warning); /* Yellow underline on focus */
+}
+
+/* Partial validity (some requirements met) */
+input.form-control.valid-partial {
+    border-bottom: 2px solid var(--clr-warning); /* Yellow underline */
+}
+
+/* Full validity (all requirements met) */
+input.form-control.valid-full {
+    border-bottom: 2px solid var(--clr-success); /* Green underline */
+}
+
+/* Invalid input */
+input.form-control.is-invalid {
+    border-bottom: 2px solid var(--clr-error); /* Red underline for invalid inputs */
+}
+
+/* Styling for the labels */
+label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+/* Styling for feedback messages */
+.invalid-feedback,
+.form-text {
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.invalid-feedback {
+    color: var(--clr-error); /* Default to red for errors */
+}
+
+.form-text {
+    color: white; /* General instructions in white */
+}
+
+/* Adjust button styling */
+button {
+    background-color: var(--clr-default);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--clr-success); /* Green on hover */
+    transform: scale(1.05); /* Subtle zoom effect */
+}

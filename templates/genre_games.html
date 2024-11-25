@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ genre }} Games - GameSite{% endblock %}
+
+{% block content %}
+
+<!-- Genre Image Section -->
+<div class="genre-image">
+    <img src="{{ url_for('static', filename='../static/background_images/' + genre.split(' ')[0].lower() + '-transparent-image.png.png') }}"
+         alt="{{ genre }} Image">
+</div>
+
+
+<!-- Genre Title -->
+<div class="text-center">
+    <h2 class="header-button-style">{{ genre }} Games</h2>
+</div>
+
+<!-- Game Cards Section -->
+<div class="row mt-4" id="games-list">
+    {% for game in games %}
+    <div class="col-lg-3 col-md-6 mb-4 game-card" data-genre="{{ genre|lower }}">
+        <a href="{{ game['store_link'] }}" target="_blank" class="game-card-link">
+            <div class="card">
+                <img src="{{ game['header_image'] }}" class="card-img-top" alt="{{ game['name'] }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ game['name'] }}</h5>
+                    <p class="card-text">{{ game['short_description'] }}</p>
+                    <p class="card-text"><strong>Price:</strong> {{ game['price'] }}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Advertisement Section -->
+<div class="advertisement-section d-flex justify-content-center align-items-center mt-3">
+    <div class="text-center">
+        <h3>Sponsored Ad</h3>
+        <iframe
+            id="random-ad-video"
+            width="1600"
+            height="400"
+            frameborder="0"
+            data-videos='{{ genre_videos|tojson }}'
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+{% endblock %}

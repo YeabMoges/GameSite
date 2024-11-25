@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - GameSite{% endblock %}
+
+{% block content %}
+
+<div style="margin-top: 20px; "></div>
+<div class="form-container mx-auto">
+    <h2 class="text-center">Login</h2>
+    <form method="POST" action="{{ url_for('login') }}">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+        <p class="mt-3 text-center">
+            Not a member? <a href="{{ url_for('register') }}">Register now!</a>
+        </p>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+{% endblock %}

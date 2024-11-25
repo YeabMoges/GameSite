@@ -1,0 +1,9 @@
+Flask==2.3.2
+Flask-SQLAlchemy==3.0.0
+SQLAlchemy==1.4.41
+boto3==1.26.0
+requests
+bcrypt
+pymysql
+python-dotenv
+pyyaml

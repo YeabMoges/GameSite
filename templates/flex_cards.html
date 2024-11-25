@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Accordion</title>
+    <link href="/style.css" rel="stylesheet" />
+    <script src="/main.js" defer></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="accordion">
+        <!-- Panel 1 -->
+        <div class="accordion-panel">
+          <h2 id="panel1-heading">
+            <button
+              class="accordion-trigger"
+              aria-controls="panel1-content"
+              aria-expanded="true"
+            >
+              <span class="accordion-title" id="panel1-title">Trending Games</span>
+              <img
+                src="https://static.wikia.nocookie.net/wutheringwaves/images/a/ad/Aero.png"
+                alt="Icon for Trending Games"
+                class="accordion-icon"
+                aria-hidden="true"
+              />
+            </button>
+          </h2>
+
+          <div
+            class="accordion-content"
+            id="panel1-content"
+            aria-labelledby="panel1-heading"
+            aria-hidden="false"
+            role="region"
+          >
+            <p>
+              Discover the hottest video games making waves across the gaming world! Whether it's the latest AAA blockbuster or an indie gem,
+              we keep you in the loop with what's trending right now. Our carefully curated selection ensures you’re always up to date with the
+              best titles available. Dive into immersive worlds, groundbreaking mechanics, and compelling stories that everyone is talking about.
+              Each week brings new experiences and surprises, so there's always something fresh to explore. Stay ahead of the curve and be the first
+              to experience what’s new and exciting in gaming.
+            </p>
+            <img
+              class="accordion-image"
+              src="https://images.squarespace-cdn.com/content/v1/5fe4caeadae61a2f19719512/c632cb68-1346-4d50-909b-41ca41ad7e8e/Wuthering+Waves+-+Flow"
+              alt="A sailboat at sea during sunset"
+            />
+          </div>
+        </div>
+
+        <!-- Panel 2 -->
+        <div class="accordion-panel">
+          <h2 id="panel2-title">
+            <button
+              class="accordion-trigger"
+              aria-expanded="false"
+              aria-controls="panel2-content"
+            >
+              <span class="accordion-title">Game Reviews</span>
+              <img
+                src="https://static.wikia.nocookie.net/halo/images/a/a6/H3_Difficulty_LegendaryIcon.png/"
+                alt="Icon for Game Reviews"
+                class="accordion-icon"
+                aria-hidden="true"
+              />
+          </h2>
+
+          <div
+            role="region"
+            aria-labelledby="panel2-title"
+            aria-hidden="true"
+            class="accordion-content"
+            id="panel2-content"
+          >
+            <p>
+              Not sure if a game is worth your time? Our comprehensive reviews break down every aspect, from gameplay mechanics to storytelling,
+              graphics, and sound design. We highlight the strengths and weaknesses to give you an honest perspective. Whether you love deep narratives,
+              competitive multiplayer, or casual fun, our reviews help you find games that match your style. We also provide insights on replay value,
+              difficulty levels, and overall enjoyment. Trust us to deliver balanced and detailed critiques to enhance your gaming journey.
+            </p>
+            <img
+              class="accordion-image"
+              src="https://c4.wallpaperflare.com/wallpaper/1003/747/683/halo-infinite-halo-hd-wallpaper-preview.jpg"
+              alt="Closeup of a metal chain connected to a metal ring"
+            />
+          </div>
+        </div>
+
+        <!-- Panel 3 -->
+        <div class="accordion-panel">
+          <h2 id="panel3-title">
+            <button
+              class="accordion-trigger"
+              aria-expanded="false"
+              aria-controls="panel3-content"
+            >
+              <span class="accordion-title">Upcoming Releases</span>
+              <img
+                src="https://static.wikia.nocookie.net/92e39b2c-ec59-42b6-9314-58f40806855c/"
+                alt="Icon for Upcoming Releases"
+                class="accordion-icon"
+                aria-hidden="true"
+              />
+          </h2>
+
+          <div
+            role="region"
+            aria-labelledby="panel3-title"
+            aria-hidden="true"
+            class="accordion-content"
+            id="panel3-content"
+          >
+            <p>
+              Get ready for the next wave of incredible games! We keep you informed about upcoming releases with all the essential details,
+              including release dates, trailers, and platform availability. Whether you’re waiting for the next entry in your favorite series
+              or looking for something new, we’ve got you covered. Our previews also highlight key features, early reviews, and developer insights.
+              Stay prepared and plan your next gaming adventure with confidence. Countdown to release day starts here!
+            </p>
+            <img
+              class="accordion-image"
+              src="https://wallpapercave.com/wp/wp2860340.jpg"
+              alt="A person fishing in the ocean"
+            />
+          </div>
+        </div>
+
+        <!-- Panel 4 -->
+        <div class="accordion-panel">
+          <h2 id="panel4-title">
+            <button
+              class="accordion-trigger"
+              aria-expanded="false"
+              aria-controls="panel4-content"
+            >
+              <span class="accordion-title">Gaming News</span>
+              <img
+                src="https://image.pngaaa.com/457/6159457-middle.png"
+                alt="Icon for Gaming News"
+                class="accordion-icon"
+                aria-hidden="true"
+              />
+            </button>
+          </h2>
+
+          <div
+            role="region"
+            aria-labelledby="panel4-title"
+            aria-hidden="true"
+            class="accordion-content"
+            id="panel4-content"
+          >
+            <p>
+              Stay in the know with the latest gaming news! From groundbreaking announcements to industry shake-ups, we bring you up-to-the-minute
+              updates from around the globe. Learn about new console developments, studio acquisitions, and major game patches. Our news section also
+              covers esports highlights, streaming trends, and fan reactions to the biggest events. Whether you’re a casual gamer or a dedicated
+              enthusiast, our news keeps you connected to everything happening in the gaming universe.
+            </p>
+            <img
+              class="accordion-image"
+              src="https://i.pinimg.com/originals/fe/5f/8a/fe5f8aaab7df1b6ee17cb4d009f8ebdf.jpg"
+              alt="A white lighthouse with red top"
+            />
+          </div>
+        </div>
+
+        <!-- Panel 5 -->
+        <div class="accordion-panel">
+          <h2 id="panel5-title">
+            <button
+              class="accordion-trigger"
+              aria-expanded="false"
+              aria-controls="panel5-content"
+            >
+              <span class="accordion-title">Community Picks</span>
+              <img
+                src="https://static.wikia.nocookie.net/eldenring/images/1/10/ER_Icon_rune_hero%27s_1.png"
+                alt="Icon for Gaming News"
+                class="accordion-icon"
+                aria-hidden="true"
+              />
+            </button>
+          </h2>
+
+          <div
+            role="region"
+            aria-labelledby="panel5-title"
+            aria-hidden="true"
+            class="accordion-content"
+            id="panel5-content"
+          >
+            <p>
+              Explore what our vibrant community is playing and loving! Community Picks showcase the most recommended games by fellow gamers just like
+              you. Share your thoughts, vote on your favorites, and see how your tastes compare with others. We highlight everything from mainstream
+              hits to under-the-radar indie titles. This is a space to celebrate shared passions, discover new gems, and connect with like-minded players.
+              Your next favorite game might just be one click away!
+            </p>
+            <img
+              class="accordion-image"
+              src="https://images8.alphacoders.com/118/1186452.jpg"
+              alt="Reef outcropping with a lot of orange fish swimming"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SVG Definitions -->
+    <svg width="0" height="0" class="hidden">
+      <symbol id="boat" viewBox="0 0 35.38 36.29">
+        <!-- SVG content here -->
+      </symbol>
+      <symbol id="anchor" viewBox="0 0 33.89 36.51">
+        <!-- SVG content here -->
+      </symbol>
+      <symbol id="fishing" viewBox="0 0 36.74 35.98">
+        <!-- SVG content here -->
+      </symbol>
+      <symbol id="lighthouse" viewBox="0 0 29.58 36.55">
+        <!-- SVG content here -->
+      </symbol>
+      <symbol id="reef" viewBox="0 0 36 36.23">
+        <!-- SVG content here -->
+      </symbol>
+    </svg>
+  </body>
+</html>

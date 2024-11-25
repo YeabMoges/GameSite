@@ -1,0 +1,545 @@
+/* Fonts */
+@font-face {
+    font-family: 'Varela Round';
+    src: url('../fonts/VarelaRound-Regular.ttf') format('truetype');
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Varela Round', sans-serif;
+}
+
+/* Global Styles */
+body {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(50, 50, 50, 0.85)),
+                url('../images/epic_game_background.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Default Body Styling */
+body {
+    font-family: 'Varela Round', sans-serif;
+    color: white;
+    padding-top: 70px; /* Adjust for navbar height */
+}
+
+/* Genre Image Styling */
+.genre-image {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin: 20px 0; /* Space above and below the image */
+    position: relative; /* Context for absolute elements, if needed */
+}
+
+.genre-image img {
+    max-width: 80%; /* Adjust size of the image */
+    height: auto; /* Maintain aspect ratio */
+    opacity: 0.9; /* Slight transparency for blending */
+    border-radius: 10px; /* Optional: Rounded corners for the image */
+    transition: transform 0.3s ease; /* Smooth scaling effect on hover */
+}
+
+.genre-image img:hover {
+    transform: scale(1.05); /* Slight zoom-in on hover */
+}
+
+
+/* Action Games Background */
+body[data-genre="action"] {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle, #ff4747 20%, #900d0d 60%, #000000 100%);
+}
+
+/* RPG Games Background */
+body[data-genre="rpg"] {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle, #4cc9f0 20%, #4361ee 60%, #000000 100%);
+}
+
+/* Adventure Games Background */
+body[data-genre="adventure"] {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle, #48cae4 20%, #0096c7 60%, #000000 100%);
+}
+
+/* Simulation Games Background */
+body[data-genre="simulation"] {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle, #f9d349 20%, #f58231 60%, #000000 100%);
+}
+
+/* Sports Games Background */
+body[data-genre="sports"] {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle, #ffbe0b 20%, #ff006e 60%, #000000 100%);
+}
+
+/* Strategy Games Background */
+body[data-genre="strategy"] {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle, #9b5de5 20%, #7209b7 60%, #000000 100%);
+}
+
+/* Indie Games Background */
+body[data-genre="indie"] {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle, #06d6a0 20%, #118ab2 60%, #000000 100%);
+}
+
+/* MMO Games Background */
+body[data-genre="mmo"] {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle, #8338ec 20%, #3a0ca3 60%, #000000 100%);
+}
+
+/* Mobile Games Background */
+body[data-genre="mobile"] {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle, #004d4d 20%, #003333 60%, #000000 100%);
+}
+
+/* Free Games Background */
+body[data-genre="free to play"] {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle, #8338ec 10%, #000000 100%);
+}
+
+/* Early Access Games Background */
+body[data-genre="early access"] {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle, #ff006e 10%, #000000 100%);
+}
+
+
+
+/* General Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    padding: 0 40px;
+    font-family: 'Varela Round', sans-serif;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #f2a93b; /* Slightly orange hover effect */
+}
+
+.nav-link::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background: #f2a93b; /* Underline hover color */
+    width: 0%;
+    position: absolute;
+    left: 0;
+    bottom: -1px; /* Position just below the text */
+    transition: width 0.3s ease; /* Smooth animation */
+}
+
+.nav-link:hover::after {
+    width: 100%; /* Underline effect on hover */
+}
+
+.nav-button {
+    font-size: 1rem;
+    color: white;
+    padding: 5px 15px;
+    border: 2px solid white;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.nav-button:hover {
+    color: #f2a93b;
+    border-color: #f2a93b;
+}
+
+/* General Dropdown Menu Styling */
+.dropdown-menu {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background for dropdown */
+    color: white; /* White text for contrast */
+    border-radius: 5px; /* Subtle rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    padding: 10px;
+    display: none; /* Hidden by default */
+    opacity: 0; /* Invisible initially for fade-in effect */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth fade and slide */
+    transform: translateY(-10px); /* Start slightly higher for slide-in effect */
+}
+
+/* Show Dropdown on Hover */
+.navbar-nav .dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Slide into position */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Dropdown Links */
+.dropdown-menu a {
+    color: white; /* White text for links */
+    text-decoration: none;
+    padding: 5px 10px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover Effect on Links */
+.dropdown-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle white hover effect */
+    border-radius: 3px;
+}
+
+/* Override Bootstrap's form-control */
+.form-control {
+    border: none; /* Remove box borders */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.7); /* Add an underline */
+    border-radius: 0; /* No rounded corners */
+    background-color: transparent !important; /* Ensure transparency */
+    color: white !important; /* Keep text white */
+    font-size: 16px; /* Adjust font size for readability */
+    padding: 5px 0; /* Minimal padding for a clean look */
+    outline: none; /* Remove the focus outline */
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* Light placeholder text */
+}
+
+.form-control:focus {
+    border-bottom: 2px solid #f2a93b; /* Add an orange underline on focus */
+    box-shadow: none; /* Disable Bootstrap's box shadow */
+    background-color: transparent !important; /* Ensure transparency on focus */
+    color: white !important; /* Keep the text white */
+}
+
+.form-control:hover {
+    border-bottom: 2px solid #f2a93b; /* Optional: hover effect */
+}
+
+/* Buttons */
+.btn {
+    font-size: 0.9rem;
+    padding: 5px 15px;
+    border-radius: 20px; /* Rounded buttons */
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #DC3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #a71d2a;
+}
+
+
+/* Navbar Item Spacing */
+.navbar-nav .nav-item {
+    margin-right: 25px; /* Adjust spacing between nav items */
+}
+
+.navbar-nav .nav-item:last-child {
+    margin-right: 0; /* Remove extra spacing for last item */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Dropdown Item Styling */
+.dropdown-item {
+    color: lightgrey;
+}
+
+.dropdown-item:hover {
+    background-color: #555;
+    color: white;
+}
+
+/* Match Buttons with Navigation Links */
+.btn-login,
+.btn-register {
+    background: none; /* Remove background */
+    border: none; /* Remove border */
+    color: white; /* Match navbar link color */
+    font-size: 1rem; /* Match navbar font size */
+    text-decoration: none; /* Remove underline */
+    padding: 5px 15px; /* Add some padding for spacing */
+    cursor: pointer; /* Pointer for interactivity */
+    position: relative; /* For hover effects */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover Effect for Buttons */
+.btn-login:hover,
+.btn-register:hover {
+    color: #f2a93b; /* Match navbar hover color */
+    background: none; /* Ensure no background appears */
+}
+
+/* Add Underline Hover Effect */
+.btn-login::after,
+.btn-register::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background: #f2a93b; /* Underline hover color */
+    width: 0%;
+    position: absolute;
+    left: 0;
+    bottom: -1px; /* Position just below the text */
+    transition: width 0.3s ease; /* Smooth animation */
+}
+
+.btn-login:hover::after,
+.btn-register:hover::after {
+    width: 100%; /* Expand underline on hover */
+}
+
+
+/* Header Button Style */
+.header-button-style {
+    display: inline-block;
+    background-color: #ffc107;
+    color: black;
+    border: 2px solid black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+/* Game Card Styling */
+.game-card {
+    flex: 1 1 calc(25% - 15px); /* Responsive grid layout */
+    max-width: 23%; /* Limit maximum width */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border with transparency */
+    border-radius: 6px; /* Smooth corners */
+    text-align: center;
+    padding: 15px; /* Extra padding for better spacing */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow for depth */
+}
+
+
+.game-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 2px;
+}
+
+/* Container Layouts */
+.container {
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.row {
+    margin: 0 auto;
+    max-width: 1600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.col-lg-2 {
+    flex: 1;
+    max-width: 200px;
+}
+
+.col-lg-8 {
+    flex: 4;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Top Banner Styling */
+.banner-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.banner-container {
+    max-width: 200px;
+}
+
+/* Bottom Banner Styling */
+.bottom-banner-container {
+    max-width: 700px; /* Centered banners with fixed width */
+    width: 100%;
+    margin: 0 auto 20px;
+}
+
+.bottom-banner-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Welcome Section Styling */
+.welcome-title {
+    margin-top: 10rem;
+    font-size: 4rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.trending-title {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #ffc107; /* Matches the GameSite color scheme */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+}
+
+/* Added more spacing below trending title */
+.welcome-description {
+    font-size: 1.2rem;
+    color: lightgrey;
+    margin-top: 100px; /* Increased spacing between subtitle and description */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    text-align: center; /* Ensure description is centered */
+}
+
+/* Added more spacing below the description */
+.btn-info {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-top: 25px; /* Added spacing between description and button */
+    margin-bottom: -250px;
+}
+
+.btn-info:hover {
+    background-color: #0056b3;
+    opacity: 0.9;
+}
+
+/* Carousel Image Styling */
+.carousel-inner {
+    max-width: 800px; /* Centered carousel with fixed width */
+    margin: 0 auto; /* Center carousel horizontally */
+}
+
+.carousel-item img {
+    width: 100%; /* Ensure images fit the container width */
+    height: 300px; /* Fixed height for consistency */
+    object-fit: cover; /* Maintain aspect ratio without distortion */
+    border-radius: 10px; /* Rounded corners for images */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+
+#gameCarousel {
+    margin-top: 400px !important; /* Ensures spacing is applied */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}
+
+
+/* Form Styling */
+.form-container {
+    max-width: 800px; /* Limit form width for login/register pages */
+    width: 100%;
+    background-color: rgba(30, 30, 30, 0.85); /* Charcoal gray */
+
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add depth with shadow */
+    color: white; /* Ensure readability */
+    margin-top: 100px;
+}

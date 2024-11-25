@@ -136,39 +136,94 @@ Deployment Steps:
 
 ---
 
+## 🔒 Optional: SSL Configuration and Nginx Setup
+
+For users who want to secure their app with SSL, you can configure Nginx as a reverse proxy and obtain an SSL certificate for your domain. Here’s how:
+
+### 1. Install Nginx:
+   On your server (e.g., AWS EC2):
+   ```bash
+   sudo apt update
+   sudo apt install nginx
+   ```
+### 2. Set Up Nginx as  Reverse Proxy:
+   Create a configuration file for your Flask app:
+   ```bash
+   sudo nano /etc/nginx/sites-available/gamesite
+   ```
+
+   Add the following configuration (adjust for your domain and Flask app location):
+   ```bash
+      server {
+       listen 80;
+       server_name your-domain.com;
+
+       location / {
+           proxy_pass http://127.0.0.1:5000;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+       }
+   }
+   ```
+
+   Enable the configuration:
+   ```bash
+   sudo ln -s /etc/nginx/sites-available/gamesite /etc/nginx/sites-enabled/
+   sudo nginx -t
+   sudo systemctl reload nginx
+   ```
+
+### 3. Obtain an SSL Certificate:
+   Use Certbot to obtain a free SSL certificate:
+   ```bash
+   sudo apt install certbot python3-certbot-nginx
+   sudo certbot --nginx -d your-domain.com
+   ```
+   Follow the prompts to complete the process.
+
+### 4. Test the Configuration:
+   Access your site using HTTPS:
+   ```bash
+   https://your-domain.com
+   ```
+
+---
+
 ## 📚 **Sources**
 
 This app relies on the following key resources and tools:
+
+# Resources and Tools
 
 1. **APIs for Game Data**:
    - [Steamspy](https://steamspy.com/api.php?request=genre&genre) - The primary source for fetching game data by genre, including game titles, descriptions, images, and pricing details.
 
 2. **Frameworks and Libraries**:
-   - [Flask](https://flask.palletsprojects.com/) - A lightweight WSGI web application framework.
-   - [MySQL](https://www.mysql.com/) - Database system for storing game information.
+   - [Flask](https://flask.palletsprojects.com/) - A lightweight WSGI web application framework for backend development.
+   - [MySQL](https://www.mysql.com/) - A relational database system for storing game information.
 
 3. **Containerization**:
-   - [Docker](https://www.docker.com/) - Used for application packaging and deployment.
+   - [Docker](https://www.docker.com/) - Used for application packaging and deployment, ensuring consistency across environments.
 
 4. **Hosting**:
-   - **AWS RDS**: For scalable and managed MySQL database hosting.
-   - **AWS EC2**: Recommended for deploying and running the Dockerized app.
-   - 
+   - [AWS RDS](https://aws.amazon.com/rds/) - Provides scalable and managed MySQL database hosting.
+   - [AWS EC2](https://aws.amazon.com/ec2/) - Recommended for deploying and running the Dockerized app.
 
 5. **Development Tools**:
-   - [Python](https://www.python.org/) - The core programming language for backend development.
-   - [HTML & CSS](https://developer.mozilla.org/en-US/docs/Web) - For building the user interface.
-   - [PyCharm](https://www.jetbrains.com/pycharm/) or any preferred IDE for code editing.
+   - [Python](https://www.python.org/) - The core programming language used for backend development.
+   - [PyCharm](https://www.jetbrains.com/pycharm/) or any preferred IDE - For writing, debugging, and managing code.
+   - [Docker](https://www.docker.com/) - Used here as both a containerization and development tool.
 
 6. **Frontend Tools**:
-   - [source1]
-   - [source2]
+   - [HTML & CSS](https://developer.mozilla.org/en-US/docs/Web) - For designing and structuring the user interface. Special thanks to [Kevin Powell](https://www.youtube.com/c/KevinPowell) for web design ideas.
+   - [Bootstrap](https://getbootstrap.com/) - For responsive design and enhanced styling.
+   - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - To add interactivity to the user interface.
 
-6. **Additional Resources**:
-   - Flask Documentation: [Flask Docs](https://flask.palletsprojects.com/)
-   - Docker Hub: [Docker Hub](https://hub.docker.com/)
-   - AWS: [AWS Free Tier](https://aws.amazon.com/free/)
-
+7. **Additional Resources**:
+   - [Flask Documentation](https://flask.palletsprojects.com/) - Comprehensive guides and references for Flask.
+   - [Docker Hub](https://hub.docker.com/) - For managing and sharing Docker images.
+   - [AWS Free Tier](https://aws.amazon.com/free/) - Information about free-tier resources for AWS.
 
 ---
 

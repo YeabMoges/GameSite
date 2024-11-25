@@ -10,6 +10,7 @@
     <link href="path_to_youplay_css/youplay.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/hover_effects.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
     {% block styles %}{% endblock %}
@@ -86,7 +87,7 @@
         {% if messages %}
             <div class="container mt-4">
                 {% for category, message in messages %}
-                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert" style="margin-top: 70px; margin-bottom: -120px;">
                         {{ message }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
@@ -94,6 +95,7 @@
             </div>
         {% endif %}
     {% endwith %}
+
     <!-- Main Content -->
     <div class="container mt-5">
         {% block content %}{% endblock %}

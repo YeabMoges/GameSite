@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-from search_results import search_games
+from static.search_results import search_games
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
-from sqlalchemy.exc import IntegrityError
 import bcrypt, pymysql, os, requests, re
 
 app = Flask(__name__)
